@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'main/layout.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная страница</title>
-</head>
+{% block title %}Главная страница{% endblock %}
 
-<body>
-    <h2>Главная страница</h2>
-    <p>Главная страница</p>
-    <h5>Третий абзац</h5>
-</body>
-
-</html>
+{% block content %}
+<h2>Главная страница</h2>
+<p>Главная страница</p>
+<h5>Третий абзац</h5>
+{% endblock %}
