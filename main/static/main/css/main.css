@@ -1,0 +1,53 @@
+body {
+    background: rgba(212, 244, 251, 0.15);
+}
+
+
+aside {
+    float: left;
+    background: #F3EDF7;
+    width: 10%;
+    padding: 2% 0;
+    height: 100vh;
+    color: #0000;
+    box-shadow: 1px 5px 7px black;
+}
+
+aside img {
+    width: 300px;
+    float: none;
+    position: relative;
+    bottom: 80px;
+    right: 30px;
+}
+
+/* aside .logo {
+    font-size: 40px;
+    margin-left: 10px;
+    font-weight: bold;
+} это если рядом с картинкой будет лого*/
+
+aside ul {
+    list-style: none;
+}
+
+aside ul li {
+    color: #000;
+    display: block;
+    position: relative;
+    bottom: 90px;
+    margin-top: 20px;
+    /*отступ сверху*/
+    transition: transform .4s ease;
+
+}
+
+aside ul a {
+    text-decoration: none;
+}
+
+aside ul li:hover,
+aside ul a:hover {
+    color: #d24e00;
+    transform: scale(1.02);
+}

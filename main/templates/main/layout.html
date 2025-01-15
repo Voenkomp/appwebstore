@@ -13,20 +13,21 @@
 
 <body>
     <aside>
-        <img src="{% static 'main/img/rr_logo.jpg' %}" alt="Лого">
-        <span class="logo">store</span>
-        <h3>Навигация</h3>
+        <img src="{% static 'main/img/logo_store.png' %}" alt="Лого">
+        <!-- <span class="logo">store</span> -->
+        <!-- <h3>Навигация</h3> -->
         <ul>
-            <a href="">
-                <li><i class="fa-solid fa-tv"></i> Главная</li>
+            <a href="{% url 'home' %}">
+                <li><i class="fa-solid fa-house"></i> Главная</li>
             </a>
-            <a href="">
-                <li><i class="fa-solid fa-address-card"></i> Про нас</li>
+            <a href="{% url 'addprinter' %}">
+                <li><i class="fa-solid fa-circle-plus"></i> Добавить устройство</li>
             </a>
-            <a href="">
-                <li><i class="fa-solid fa-address-book"></i> Контакты</li>
+            <a href="{% url 'about' %}">
+                <li><i class="fa-solid fa-address-book"></i> О нас</li>
             </a>
         </ul>
+
     </aside>
     <main>
         {% block content %}
