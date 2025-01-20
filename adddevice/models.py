@@ -13,3 +13,7 @@ class Device(models.Model):
 
     def __str__(self):
         return self.inv_num
+
+    class Meta:
+        verbose_name = "Устройство"
+        verbose_name_plural = "Устройства"

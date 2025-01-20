@@ -1,17 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from adddevice.models import Device
 
 
 def index(request):
-    data = {
-        "title": "Главная страница",
-        "values": ["Some", "Hello", "123"],
-    }
-    return render(request, "main/index.html", context=data)
-
-
-def addprinter(request):
-    return render(request, "main/addprinter.html")
+    device = Device.objects.all()
+    return render(request, "main/index.html", {"device": device})
 
 
 def about(request):
