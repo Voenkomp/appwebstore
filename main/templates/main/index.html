@@ -4,4 +4,8 @@
 
 {% block content %}
 <h2>проверка страницы главной страницы</h2>
+<h1>{{ title }}</h1>
+{% for el in values %}
+<p>{{ el }}</p>
+{% endfor %}
 {% endblock %}

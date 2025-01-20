@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "main",
+    "adddevice",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -80,7 +81,7 @@ DATABASES = {
         "NAME": "storedb2_0",
         "USER": "admin",
         "PASSWORD": "doyouwannaenter",
-        "HOST": "192.168.1.56",
+        "HOST": "srvbase",
         "PORT": "32768",
     }
 }

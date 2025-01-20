@@ -14,7 +14,7 @@ aside {
 }
 
 aside img {
-    width: 300px;
+    width: 120%;
     float: none;
     position: relative;
     bottom: 80px;
