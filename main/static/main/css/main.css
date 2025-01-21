@@ -51,3 +51,10 @@ aside ul a:hover {
     color: #d24e00;
     transform: scale(1.02);
 }
+
+main .features {
+    float: left;
+    margin-top: 100px;
+    text-align: center;
+    width: 75%;
+}

@@ -4,10 +4,15 @@
 
 {% block content %}
 <h2>проверка страницы главной страницы</h2>
-{% for el in device %}
-<div class="alert alert-warning">
-    <h3>{{ el.inv_num }}</h3>
-    <p>{{ el.model }}</p>
+
+<div class="features">
+    {% for el in device %}
+    <div class="alert alert-warning">
+        <h3>{{ el.inv_num }}</h3>
+        <p>{{ el.model }}</p>
+        <p>{{ el.net_address }}</p>
+    </div>
+    {% endfor %}
 </div>
-{% endfor %}
+
 {% endblock %}

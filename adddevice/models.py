@@ -5,6 +5,7 @@ class Device(models.Model):
     inv_num = models.CharField("Инвентарный номер", max_length=15)
     producer = models.CharField("Производитель", max_length=20)
     model = models.CharField("Модель", max_length=35)
+    serial = models.CharField("Серийный номер", max_length=20, null=True)
     cartridge = models.CharField("Картридж", max_length=15)
     building = models.CharField("Корпус", max_length=5)
     location = models.CharField("Расположение", max_length=10)
