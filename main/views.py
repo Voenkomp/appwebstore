@@ -4,7 +4,7 @@ from adddevice.models import Device
 
 
 def index(request):
-    device = Device.objects.all()
+    device = Device.objects.order_by("inv_num")
     return render(request, "main/index.html", {"device": device})
 
 

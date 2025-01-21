@@ -3,5 +3,15 @@
 {% block title %}Добавить устройство{% endblock %}
 
 {% block content %}
-<h2>Проверка страницы добавления устройства</h2>
+<div class="features">
+    <form method="post">
+        {% csrf_token %}
+        {% for el in form %}
+        {{ el }}<br>
+        {% endfor %}
+        <span>{{ error }}</span>
+        <!-- {{ form.inv_num }}<br> -->
+        <button class="btn btn-success" type="submit">Добавить устройство</button>
+    </form>
+</div>
 {% endblock %}

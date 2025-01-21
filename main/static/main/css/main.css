@@ -6,7 +6,7 @@ body {
 aside {
     float: left;
     background: #F3EDF7;
-    width: 10%;
+    width: 200px;
     padding: 2% 0;
     height: 100vh;
     color: #0000;
@@ -55,6 +55,13 @@ aside ul a:hover {
 main .features {
     float: left;
     margin-top: 100px;
+    margin-left: 60px;
     text-align: center;
     width: 75%;
 }
+
+/* form {
+    margin-left: 32%;
+    width: 500px;
+    margin-top: 50px;
+} */
