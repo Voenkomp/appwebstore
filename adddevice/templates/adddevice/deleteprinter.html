@@ -1,0 +1,17 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Удаление статьи{% endblock %}
+
+{% block content %}
+<div class="features">
+    <form method="post">
+        {% csrf_token %}
+        {% for el in form %}
+        {{ el }}<br>
+        {% endfor %}
+        <span>{{ error }}</span>
+        <!-- {{ form.inv_num }}<br> -->
+        <button class="btn btn-success" type="submit">Удалить устройство</button>
+    </form>
+</div>
+{% endblock %}

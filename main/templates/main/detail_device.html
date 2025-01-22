@@ -6,7 +6,8 @@
 
 <div class="features">
     <h1>{{ printer.inv_num }}</h1>
-
+    <a href="{% url 'device-delete' printer.id %}" class="btn btn-danger">Удалить устройство</a>
+    <a href="{% url 'device-update' printer.id %}" class="btn btn-info">Редактировать</a>
 </div>
 
 {% endblock %}

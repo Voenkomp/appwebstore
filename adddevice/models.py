@@ -15,6 +15,9 @@ class Device(models.Model):
     def __str__(self):
         return self.inv_num
 
+    def get_absolute_url(self):
+        return f"/device/{self.id}"
+
     class Meta:
         verbose_name = "Устройство"
         verbose_name_plural = "Устройства"
