@@ -6,12 +6,12 @@ from django.views.generic import DetailView, UpdateView, DeleteView
 
 
 def index(request):
-    device = Device.objects.order_by("inv_num")
+    device = Device.objects.order_by("id")
     return render(request, "main/index.html", {"device": device})
 
 
 def all_devices(request):
-    device = Device.objects.order_by("inv_num")
+    device = Device.objects.order_by("id")
     return render(request, "main/all_devices.html", {"device": device})
 
 

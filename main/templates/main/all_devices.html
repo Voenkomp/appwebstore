@@ -3,14 +3,42 @@
 {% block title %}Все устройства{% endblock %}
 
 {% block content %}
-
-<div class="features">
+<!-- <div class="features">
     {% for el in device %}
     <div class="alert alert-warning">
         <p> {{ el.building}} {{ el.location}} {{ el.inv.num }} {{ el.producer }} {{ el.model }}</p>
         <a href="{% url 'device-detail' el.id %}" class="btn btn-warning">Подробнее</a>
     </div>
     {% endfor %}
+</div> -->
+
+<div class='features'>
+    <table>
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Инвентарный номер</th>
+                <th>Аппарат</th>
+                <th>Серийный номер</th>
+                <th>Расходный материал</th>
+                <th>Расположение</th>
+                <th>Примечание</th>
+                <th>Адрес в сети</th>
+            </tr>
+        </thead>
+        <tbody>{% for el in device %}
+            <tr>
+                <td>{{el.id}}</td>
+                <td>{{el.inv_num}}</td>
+                <td>{{el.producer}} {{el.model}}</td>
+                <td>{{el.serial}}</td>
+                <td>{{el.cartridge}}</td>
+                <td>{{el.building}} {{el.location}}</td>
+                <td>{{el.note}}</td>
+                <td>{{el.net_address}}</td>
+            </tr>{% endfor %}
+        </tbody>
+    </table>
 </div>
 
 {% endblock %}
