@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from adddevice.models import Device
+from main.models import Device
 from adddevice.forms import DeviceForm
 from django.views.generic import DetailView, UpdateView, DeleteView
 

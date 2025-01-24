@@ -1,4 +1,4 @@
-from .models import Device
+from main.models import Device
 from django.forms import ModelForm, TextInput
 
 
@@ -7,14 +7,13 @@ class DeviceForm(ModelForm):
         model = Device
         fields = [
             "inv_num",
-            "producer",
-            "model",
             "serial",
-            "cartridge",
+            "prod_mod_dev",
             "building",
             "location",
             "note",
-            "net_address",
+            "hostname",
+            "ip_add",
         ]
         widgets = {
             "inv_num": TextInput(

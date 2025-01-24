@@ -23,19 +23,21 @@
                 <th>Расходный материал</th>
                 <th>Расположение</th>
                 <th>Примечание</th>
-                <th>Адрес в сети</th>
+                <th>Hostname</th>
+                <th>ip-адрес</th>
             </tr>
         </thead>
         <tbody>{% for el in device %}
             <tr>
                 <td>{{el.id}}</td>
                 <td>{{el.inv_num}}</td>
-                <td>{{el.producer}} {{el.model}}</td>
+                <td>{{el.prod_mod_dev}}</td>
                 <td>{{el.serial}}</td>
                 <td>{{el.cartridge}}</td>
                 <td>{{el.building}} {{el.location}}</td>
                 <td>{{el.note}}</td>
-                <td>{{el.net_address}}</td>
+                <td>{{el.hostname}}</td>
+                <td>{{el.ip_add}}</td>
             </tr>{% endfor %}
         </tbody>
     </table>
