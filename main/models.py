@@ -2,8 +2,10 @@ from django.db import models
 
 
 class ProducerModel(models.Model):
-    producer_model = models.CharField("Производитель_и_модель", max_length=50)
-    create_time = models.DateTimeField("Время_создания", auto_now_add=True)
+    producer_model = models.CharField(
+        "Производитель и модель", max_length=50, unique=True
+    )
+    create_time = models.DateTimeField("Время создания", auto_now_add=True)
 
     def __str__(self):
         return f"{self.producer_model}"
@@ -14,11 +16,9 @@ class ProducerModel(models.Model):
 
 
 class Cartridges(models.Model):
-    prod_mod = models.ForeignKey(
-        ProducerModel, on_delete=models.CASCADE, verbose_name="Модель"
-    )
-    cartridge = models.CharField("Картридж", max_length=50)
-    create_time = models.DateTimeField("Время_создания", auto_now_add=True)
+    prod_mod = models.ManyToManyField(ProducerModel, verbose_name="Модель")
+    cartridge = models.CharField("Картридж", max_length=50, unique=True)
+    create_time = models.DateTimeField("Время создания", auto_now_add=True)
 
     def __str__(self):
         return f"{self.cartridge}"

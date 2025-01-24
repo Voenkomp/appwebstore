@@ -33,11 +33,14 @@
                 <td>{{el.inv_num}}</td>
                 <td>{{el.prod_mod_dev}}</td>
                 <td>{{el.serial}}</td>
-                <td>{{el.cartridge}}</td>
-                <td>{{el.building}} {{el.location}}</td>
-                <td>{{el.note}}</td>
-                <td>{{el.hostname}}</td>
-                <td>{{el.ip_add}}</td>
+                <td>{% for cart in cartridges %}
+            <tr>{{ cart }}</tr>
+            {% endfor %}
+            </td>
+            <td>{{el.building}} {{el.location}}</td>
+            <td>{{el.note}}</td>
+            <td>{{el.hostname}}</td>
+            <td>{{el.ip_add}}</td>
             </tr>{% endfor %}
         </tbody>
     </table>

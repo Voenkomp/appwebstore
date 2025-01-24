@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from main.models import Device
+from .models import Device, Cartridges
 from adddevice.forms import DeviceForm
 from django.views.generic import DetailView, UpdateView, DeleteView
 
@@ -12,7 +12,10 @@ def index(request):
 
 def all_devices(request):
     device = Device.objects.order_by("id")
-    return render(request, "main/all_devices.html", {"device": device})
+    cartridges = Cartridges.objects.all()
+    return render(
+        request, "main/all_devices.html", {"device": device, "cartridges": cartridges}
+    )
 
 
 class DeviceDetailView(DetailView):
