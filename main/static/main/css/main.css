@@ -84,3 +84,11 @@ td {
 th {
     background-color: #f4f4f4;
 }
+
+main .lower {
+    float: left;
+    margin-top: 100px;
+    margin-left: 60px;
+    text-align: center;
+    width: 75%;
+}

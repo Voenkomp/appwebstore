@@ -16,32 +16,37 @@
     <table>
         <thead>
             <tr>
-                <th>№</th>
+                <!-- <th>№</th> -->
                 <th>Инвентарный номер</th>
                 <th>Аппарат</th>
                 <th>Серийный номер</th>
                 <th>Расходный материал</th>
+                <th>Корпус</th>
                 <th>Расположение</th>
                 <th>Примечание</th>
                 <th>Hostname</th>
                 <th>ip-адрес</th>
             </tr>
         </thead>
-        <tbody>{% for el in device %}
+        <tbody>
+            {% for device in devices %}
             <tr>
-                <td>{{el.id}}</td>
-                <td>{{el.inv_num}}</td>
-                <td>{{el.prod_mod_dev}}</td>
-                <td>{{el.serial}}</td>
-                <td>{% for cart in cartridges %}
-            <tr>{{ cart }}</tr>
+                <td>{{ device.inv_num }}</td>
+                <td>{{ device.prod_mod_dev }}</td>
+                <td>{{ device.serial }}</td>
+                <td>
+                    {% for cartridge in device.prod_mod_dev.model.all %}
+                    {{ cartridge.cartridge }}<br>
+                    {% endfor %}
+                </td>
+                <td>{{ device.building }}</td>
+                <td>{{ device.location }}</td>
+                <td>{{ device.note }}</td>
+                <td>{{ device.hostname }}</td>
+                <td>{{ device.ip_add }}</td>
+
+            </tr>
             {% endfor %}
-            </td>
-            <td>{{el.building}} {{el.location}}</td>
-            <td>{{el.note}}</td>
-            <td>{{el.hostname}}</td>
-            <td>{{el.ip_add}}</td>
-            </tr>{% endfor %}
         </tbody>
     </table>
 </div>

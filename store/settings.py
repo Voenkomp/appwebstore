@@ -81,7 +81,7 @@ DATABASES = {
         "NAME": "storedb2_0",
         "USER": "admin",
         "PASSWORD": "doyouwannaenter",
-        "HOST": "srvbase",
+        "HOST": "192.168.1.56",
         "PORT": "32768",
     }
 }

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Device, Cartridges
 from adddevice.forms import DeviceForm
-from django.views.generic import DetailView, UpdateView, DeleteView
+from django.views.generic import DetailView, UpdateView, DeleteView, ListView
 
 
 def index(request):
@@ -11,11 +11,8 @@ def index(request):
 
 
 def all_devices(request):
-    device = Device.objects.order_by("id")
-    cartridges = Cartridges.objects.all()
-    return render(
-        request, "main/all_devices.html", {"device": device, "cartridges": cartridges}
-    )
+    devices = Device.objects.all()
+    return render(request, "main/all_devices.html", {"devices": devices})
 
 
 class DeviceDetailView(DetailView):

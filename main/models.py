@@ -16,7 +16,9 @@ class ProducerModel(models.Model):
 
 
 class Cartridges(models.Model):
-    prod_mod = models.ManyToManyField(ProducerModel, verbose_name="Модель")
+    prod_mod = models.ManyToManyField(
+        ProducerModel, verbose_name="Модель", related_name="model"
+    )
     cartridge = models.CharField("Картридж", max_length=50, unique=True)
     create_time = models.DateTimeField("Время создания", auto_now_add=True)
 
