@@ -34,7 +34,10 @@ class Device(models.Model):
     inv_num = models.CharField("Инвентарный номер", max_length=15)
     serial = models.CharField("Серийный номер", max_length=20, blank=True)
     prod_mod_dev = models.ForeignKey(
-        ProducerModel, on_delete=models.CASCADE, verbose_name="Модель"
+        ProducerModel,
+        on_delete=models.CASCADE,
+        verbose_name="Модель",
+        related_name="producermodelset",
     )
     building = models.CharField("Корпус", max_length=10)
     location = models.CharField("Расположение", max_length=50)
