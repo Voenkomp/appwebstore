@@ -52,6 +52,13 @@ aside ul a:hover {
     transform: scale(1.02);
 }
 
+main .search {
+    float: left;
+    margin-top: 100px;
+    margin-left: 600px;
+}
+
+
 main .features {
     float: left;
     margin-top: 100px;

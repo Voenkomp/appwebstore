@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Device, Cartridges, ProducerModel
 from adddevice.forms import DeviceForm
-from django.views.generic import DetailView, UpdateView, DeleteView, ListView
+from django.views.generic import DetailView, UpdateView, DeleteView
+from .filters import DeviceFilter
 
 
 def index(request):
@@ -12,7 +13,8 @@ def index(request):
 
 def all_devices(request):
     devices = Device.objects.prefetch_related("prod_mod_dev__model").all()
-    return render(request, "main/all_devices.html", {"devices": devices})
+    filter = DeviceFilter(request.GET, queryset=devices)
+    return render(request, "main/all_devices.html", {"devices": filter})
 
 
 class DeviceDetailView(DetailView):

@@ -29,7 +29,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for device in devices %}
+            {% for device in devices.qs %}
             <tr>
                 <td>{{ device.inv_num }}</td>
                 <td>{{ device.prod_mod_dev }}</td>
@@ -50,5 +50,13 @@
         </tbody>
     </table>
 </div>
+
+<div class="search">
+    <form method="get" class="customform">
+        {{ devices.form.as_p }}
+        <button class="btn btn-success" type="submit">Фильтровать</button>
+    </form>
+</div>
+
 
 {% endblock %}
