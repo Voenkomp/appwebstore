@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import JsonResponse
 from .models import Device, Cartridges, ProducerModel
 from adddevice.forms import DeviceForm
 from django.views.generic import DetailView, UpdateView, DeleteView
 from .filters import DeviceFilter
+from dal import autocomplete
 
 
 def index(request):
@@ -33,6 +34,14 @@ class DeviceDeleteView(DeleteView):
     model = Device
     success_url = "/"
     template_name = "adddevice/deleteprinter.html"
+
+
+class ProducerModelAutocomlete(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        qs = ProducerModel.objects.all()
+        if self.q:
+            qs = qs.filter(name__icontains=self.q)
+        return qs
 
 
 def about(request):

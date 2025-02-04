@@ -12,5 +12,4 @@ urlpatterns = [
     path(
         "device/<int:pk>/delete", views.DeviceDeleteView.as_view(), name="device-delete"
     ),
-    # path("devices/", views.DeviceListView.as_view(), name="device_list"),
 ]

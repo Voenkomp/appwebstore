@@ -1,8 +1,16 @@
-from main.models import Device
-from django.forms import ModelForm, TextInput
+from main.models import Device, ProducerModel
+from django.forms import ModelForm, TextInput, ModelChoiceField, Select
+from dal import autocomplete
 
 
 class DeviceForm(ModelForm):
+    prod_mod_dev = ModelChoiceField(
+        queryset=ProducerModel.objects.all(),
+        widget=autocomplete.ModelSelect2(url="device-autocomplete"),
+        required=False,
+        label="Выберите принтер",
+    )
+
     class Meta:
         model = Device
         fields = [
@@ -28,9 +36,6 @@ class DeviceForm(ModelForm):
             "serial": TextInput(
                 attrs={"class": "form-control", "placeholder": "Серийный номер"}
             ),
-            "cartridge": TextInput(
-                attrs={"class": "form-control", "placeholder": "Картридж"}
-            ),
             "building": TextInput(
                 attrs={"class": "form-control", "placeholder": "Корпус"}
             ),
@@ -40,7 +45,10 @@ class DeviceForm(ModelForm):
             "note": TextInput(
                 attrs={"class": "form-control", "placeholder": "Примечание"}
             ),
-            "net_address": TextInput(
-                attrs={"class": "form-control", "placeholder": "Hostname/IP"}
+            "hostname": TextInput(
+                attrs={"class": "form-control", "placeholder": "Hostname"}
+            ),
+            "ip_add": TextInput(
+                attrs={"class": "form-control", "placeholder": "ip-адрес"}
             ),
         }
