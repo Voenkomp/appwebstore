@@ -6,17 +6,17 @@
 <div class="features">
     <form method="post">
         {% csrf_token %}
-        {% for el in form %}
+        {{ form.as_p }}
+        {% if form.inv_num.errors %}
+        <div class="text-danger"> {{ form.inv_num.errors.0 }}</div>
+        {% endif %}
+        <!-- {% for el in form %}
         {{ el }}<br>
-        {% endfor %}
+        {% endfor %} -->
         <span>{{ error }}</span>
         <!-- {{ form.inv_num }}<br> -->
         <button class="btn btn-success" type="submit">Добавить устройство</button>
     </form>
 </div>
-
-{% load static %}
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-{{ form.media }}
 
 {% endblock %}

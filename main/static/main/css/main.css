@@ -63,23 +63,20 @@ main .features {
     float: left;
     margin-top: 100px;
     margin-left: 100px;
-    text-align: center;
+    text-align: left;
     width: 75%;
 }
 
 form {
-    margin-left: 32%;
+    margin-left: 20%;
     width: 500px;
     margin-top: 50px;
 }
 
-/* table {
-    width: 80%;
-    border-collapse: collapse;
-    position: relative;
-    top: 100px;
-    left: 60px;
-} */
+.form-control {
+    padding-left: 20px;
+}
+
 
 th,
 td {
@@ -99,3 +96,10 @@ main .lower {
     text-align: center;
     width: 75%;
 }
+
+/* .select2-container .select2-selection--single .select2-selection__rendered {
+    padding-right: 30px !important; */
+/* Смещение текста вправо */
+/* padding-right: 10px !important; */
+/* Чтобы стрелка не налезала */
+/* } */
