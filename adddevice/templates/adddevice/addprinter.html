@@ -1,21 +1,45 @@
 {% extends 'main/layout.html' %}
 
+
 {% block title %}Добавить устройство{% endblock %}
 
 {% block content %}
-<div class="features">
+<div class="addset">
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        {% if form.inv_num.errors %}
-        <div class="text-danger"> {{ form.inv_num.errors.0 }}</div>
-        {% endif %}
-        <!-- {% for el in form %}
-        {{ el }}<br>
-        {% endfor %} -->
+        <div class="formsetting">
+            {% if form.inv_num.errors %}
+            <div class="text-danger">
+                {{ form.inv_num.errors.0 }}
+            </div>
+            {% endif %}
+            {{ form.inv_num }}
+        </div>
+        <div class="formsetting">
+            {% if form.serial.errors %}
+            <div class="text-danger">
+                {{ form.serial.errors.0 }}
+            </div>
+            {% endif %}
+            {{ form.serial }}
+        </div>
+        <div class="formsetting">{{ form.prod_mod_dev }}</div>
+        <div class="formsetting">{{ form.building }}</div>
+        <div class="formsetting">{{ form.location }}</div>
+        <div class="formsetting">{{ form.note }}</div>
+        <div class="formsetting">{{ form.hostname }}</div>
+        <div class="formsetting">{{ form.ip_add }}</div>
+        <!-- {{ form.as_p }} -->
         <span>{{ error }}</span>
         <!-- {{ form.inv_num }}<br> -->
-        <button class="btn btn-success" type="submit">Добавить устройство</button>
+        <div><button class="btn btn-success" type="submit">Добавить устройство</button></div>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
     </form>
 </div>
 

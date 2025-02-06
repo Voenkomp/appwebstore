@@ -7,13 +7,12 @@ from django.contrib import messages
 
 
 def addprinter(request):
-    error = ""
     if request.method == "POST":
         form = DeviceForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, "Устройство успешно добавлено")
-            return redirect("")
+            return redirect("/all")
         else:
             messages.error(request, "Ошибка. Проверьте форму")
     else:
