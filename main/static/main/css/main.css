@@ -5,34 +5,40 @@ body {
 
 aside {
     float: left;
-    background: #F3EDF7;
-    width: 250px;
+    background: #d9e5fd;
+    width: 270px;
     padding: 2% 0;
     height: 100vh;
     color: #0000;
-    box-shadow: 1px 5px 7px black;
+    box-shadow: 1px 5px 7px rgb(153, 150, 150);
 }
 
 aside img {
-    width: 120%;
+    width: 60%;
     float: none;
     position: relative;
-    bottom: 80px;
-    right: 30px;
+    bottom: 30px;
+    left: 50px;
 }
 
-/* aside .logo {
+aside .text-logo {
     font-size: 40px;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     font-weight: bold;
-} это если рядом с картинкой будет лого*/
+    position: relative;
+    color: black;
+    bottom: 40px;
+    left: 55px;
+}
 
 aside ul {
     list-style: none;
+    margin-top: 100px;
 }
 
 aside ul li {
     color: #000;
+    font-size: 1.1em;
     display: block;
     position: relative;
     bottom: 90px;
