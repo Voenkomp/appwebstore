@@ -1,24 +1,30 @@
 body {
     background: rgba(212, 244, 251, 0.15);
+    display: flex;
 }
-
 
 aside {
     float: left;
     background: #d9e5fd;
     width: 270px;
+    flex-shrink: 0;
     padding: 2% 0;
     height: 100vh;
     color: #0000;
     box-shadow: 1px 5px 7px rgb(153, 150, 150);
 }
 
+main {
+    flex-grow: 1;
+    /* padding: 20px; */
+}
+
 aside img {
-    width: 60%;
+    width: 45%;
     float: none;
     position: relative;
-    bottom: 30px;
-    left: 50px;
+    bottom: 20px;
+    left: 75px;
 }
 
 aside .text-logo {
@@ -27,7 +33,7 @@ aside .text-logo {
     font-weight: bold;
     position: relative;
     color: black;
-    bottom: 40px;
+    bottom: 25px;
     left: 55px;
 }
 
@@ -58,10 +64,15 @@ aside ul a:hover {
     transform: scale(1.02);
 }
 
-main .search {
-    float: left;
-    margin-top: 100px;
-    margin-left: 600px;
+main .filter-device {
+
+    width: 30%;
+    flex-shrink: 0;
+
+}
+
+.custom-form {
+    position: relative;
 }
 
 
@@ -73,21 +84,33 @@ main .features {
     width: 75%;
 }
 
-form {
+/* form {
     margin-left: 20%;
     width: 500px;
     margin-top: 50px;
-}
+} */
 
 .form-control {
     padding-left: 20px;
 }
 
+/* Настройки положения таблицы на странице 'все устройства' */
+.table-set {
+    /* position: absolute; */
+    max-width: 70%;
+    /* float: center; */
+    /* margin-top: 2%; */
+}
+
+table {
+    font-size: 12px;
+}
+
 th,
 td {
     border: 1px solid #a71717;
-    padding: 10px;
-    text-align: left;
+    padding: 5px;
+    text-align: center;
 }
 
 th {

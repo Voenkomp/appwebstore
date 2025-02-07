@@ -5,7 +5,7 @@
 
 {% block content %}
 <div class="addset">
-    <form method="post">
+    <form method="post" class="add-printer-form">
         {% csrf_token %}
         <div class="formsetting">
             {% if form.inv_num.errors %}

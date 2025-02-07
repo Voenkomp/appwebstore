@@ -12,7 +12,7 @@ def addprinter(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Устройство успешно добавлено")
-            return redirect("/all")
+            return redirect("/add")
         else:
             messages.error(request, "Ошибка. Проверьте форму")
     else:

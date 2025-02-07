@@ -7,7 +7,7 @@
 <div class="features">
     {% for el in device %}
     <div class="alert alert-warning">
-        <p> {{ el.building}} {{ el.location}} {{ el.inv.num }} {{ el.producer }} {{ el.model }}</p>
+        <p> {{ el.building}} {{ el.location}} {{ el.inv_num }} {{ el.producer }} {{ el.model }}</p>
         <a href="{% url 'device-detail' el.id %}" class="btn btn-warning">Подробнее</a>
     </div>
     {% endfor %}
