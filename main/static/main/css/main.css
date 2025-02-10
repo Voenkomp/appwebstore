@@ -17,6 +17,10 @@ aside {
 main {
     flex-grow: 1;
     /* padding: 20px; */
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    height: 100vh;
+
 }
 
 aside img {
@@ -29,7 +33,6 @@ aside img {
 
 aside .text-logo {
     font-size: 40px;
-    /* margin-left: 10px; */
     font-weight: bold;
     position: relative;
     color: black;
@@ -64,12 +67,6 @@ aside ul a:hover {
     transform: scale(1.02);
 }
 
-main .filter-device {
-
-    width: 30%;
-    flex-shrink: 0;
-
-}
 
 .custom-form {
     position: relative;
@@ -84,11 +81,6 @@ main .features {
     width: 75%;
 }
 
-/* form {
-    margin-left: 20%;
-    width: 500px;
-    margin-top: 50px;
-} */
 
 .form-control {
     padding-left: 20px;
@@ -96,14 +88,29 @@ main .features {
 
 /* Настройки положения таблицы на странице 'все устройства' */
 .table-set {
-    /* position: absolute; */
-    max-width: 70%;
-    /* float: center; */
-    /* margin-top: 2%; */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
+    padding-top: 5%;
+    height: 100vh;
+    max-width: 100%;
+
+}
+
+/* Стили фильтра для поиска в таблице на странице "все устройства" */
+main .filter-device {
+    position: sticky;
+    /* right: 0; */
+    top: 0;
+    height: 100vh;
+    padding-top: 100px;
+
 }
 
 table {
-    font-size: 12px;
+    font-size: 90%;
+    /* margin-left: 100px; */
 }
 
 th,
@@ -124,6 +131,8 @@ main .lower {
     text-align: center;
     width: 75%;
 }
+
+
 
 /* .select2-container .select2-selection--single .select2-selection__rendered {
     padding-right: 30px !important; */
