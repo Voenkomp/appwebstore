@@ -92,7 +92,8 @@ main .features {
     justify-content: center;
     align-items: flex-start;
     overflow-y: auto;
-    padding-top: 5%;
+    padding: 2%;
+    /* padding-top: 3%; */
     height: 100vh;
     max-width: 100%;
 
@@ -100,11 +101,12 @@ main .features {
 
 /* Стили фильтра для поиска в таблице на странице "все устройства" */
 main .filter-device {
+    padding: 60px;
+    padding-top: 100px;
     position: sticky;
     /* right: 0; */
-    top: 0;
+    /* top: 0; */
     height: 100vh;
-    padding-top: 100px;
 
 }
 
