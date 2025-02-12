@@ -36,12 +36,12 @@ class DeviceDeleteView(DeleteView):
     template_name = "adddevice/deleteprinter.html"
 
 
-class ProducerModelAutocomlete(autocomplete.Select2QuerySetView):
-    def get_queryset(self):
-        qs = ProducerModel.objects.all()
-        if self.q:
-            qs = qs.filter(name__icontains=self.q)
-        return qs
+# class ProducerModelAutocomlete(autocomplete.Select2QuerySetView):
+#     def get_queryset(self):
+#         qs = ProducerModel.objects.all()
+#         if self.q:
+#             qs = qs.filter(name__icontains=self.q)
+#         return qs
 
 
 def about(request):

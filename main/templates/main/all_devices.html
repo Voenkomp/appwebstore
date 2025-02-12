@@ -5,7 +5,7 @@
 {% block content %}
 
 <div class='table-set'>
-    <table>
+    <table id="example" class="display" style="width:100%">
         <thead>
             <tr>
                 <!-- <th>№</th> -->
@@ -41,6 +41,16 @@
             {% endfor %}
         </tbody>
     </table>
+
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                paging: false,
+                searching: false,
+                info: false
+            });
+        });
+    </script>
 </div>
 
 <div class="filter-device">
