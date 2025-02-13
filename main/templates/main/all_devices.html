@@ -5,7 +5,7 @@
 {% block content %}
 
 <div class='table-set'>
-    <table id="example" class="display" style="width:100%">
+    <table id="table-all-devices" class="display" style="width:100%">
         <thead>
             <tr>
                 <!-- <th>№</th> -->
@@ -26,10 +26,21 @@
                 <td>{{ device.inv_num }}</td>
                 <td>{{ device.prod_mod_dev }}</td>
                 <td>{{ device.serial }}</td>
-                <td>
-                    {% for cartridge in device.prod_mod_dev.model.all %}
-                    {{ cartridge.cartridge }}<br>
-                    {% endfor %}
+                <td class="cartridge-cell">
+                    <div class="cartridge-summary">
+                        {% for cartridge in device.prod_mod_dev.model.all|slice:":1" %}
+                        {{ cartridge.cartridge }}
+                        {% endfor %}
+                        {% if device.prod_mod_dev.model.count > 1 %}
+                        <span class="more-indicator">...&#9660;</span>
+                        {% endif %}
+                    </div>
+                    <div class="cartridge-details" style="display: none;">
+                        {% for cartridge in device.prod_mod_dev.model.all %}
+                        <p class="list-cartridge">{{ cartridge.cartridge }};</p>
+                        {% endfor %}
+                        <span class="more-indicator">&#9650;</span>
+                    </div>
                 </td>
                 <td>{{ device.building }}</td>
                 <td>{{ device.location }}</td>
@@ -44,16 +55,32 @@
 
     <script>
         $(document).ready(function () {
-            $('#example').DataTable({
+            $('#table-all-devices').DataTable({
                 paging: false,
                 searching: false,
                 info: false,
                 fixedHeader: true,
                 scrollY: '85vh',
                 scroller: true,
-            })
-        });
+            });
 
+            $('#table-all-devices').on('click', '.more-indicator', function (event) {
+                event.stopPropagation(); // Остановка всплытия события
+                var $cell = $(this).closest('td.cartridge-cell');
+                var $summary = $cell.find('.cartridge-summary');
+                var $details = $cell.find('.cartridge-details');
+
+                if ($details.is(':visible')) {
+                    // Если детали раскрыты, скрываем их
+                    $details.hide();
+                    $summary.show();
+                } else {
+                    // Если детали скрыты, раскрываем их
+                    $summary.hide();
+                    $details.show();
+                }
+            });
+        });
     </script>
 </div>
 

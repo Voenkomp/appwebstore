@@ -94,8 +94,8 @@ main .features {
     /* overflow-y: auto; */
     padding: 4%;
     padding-top: 3%;
-    height: 100vh;
-    max-width: 100%;
+    /* height: 100vh; */
+    /* max-width: 100%; */
 
 }
 
@@ -137,7 +137,36 @@ main .lower {
     margin-top: 15px;
 }
 
+/* .cartridge-cell {
+    cursor: pointer;
+    /* Курсор в виде указателя
+} */
 
+.cartridge-summary {
+    display: block;
+    /* Показываем сокращённое содержимое */
+}
+
+.cartridge-details {
+    /* cursor: pointer; */
+    display: none;
+    /* Скрываем полное содержимое */
+    padding: 10px;
+    /* background: #f9f9f9; */
+    /* border: 1px solid #ddd; */
+    margin-top: 5px;
+}
+
+.more-indicator {
+    color: #007bff;
+    /* Цвет индикатора "..." */
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.list-cartridge {
+    margin-bottom: 0px;
+}
 
 /* .select2-container .select2-selection--single .select2-selection__rendered {
     padding-right: 30px !important; */
