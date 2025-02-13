@@ -18,7 +18,7 @@ main {
     flex-grow: 1;
     /* padding: 20px; */
     display: grid;
-    grid-template-columns: 1fr 350px;
+    grid-template-columns: 1fr 330px;
     height: 100vh;
 
 }
@@ -88,15 +88,30 @@ main .features {
 
 /* Настройки положения таблицы на странице 'все устройства' */
 .table-set {
-    /* display: flex; */
+    display: flex;
     justify-content: center;
     align-items: flex-start;
-    overflow-y: auto;
+    /* overflow-y: auto; */
     padding: 4%;
-    /* padding-top: 3%; */
+    padding-top: 3%;
     height: 100vh;
     max-width: 100%;
 
+}
+
+td.dt-control {
+    text-align: center;
+    cursor: pointer;
+}
+
+td.dt-control:before {
+    content: "➕";
+    /* Иконка плюса */
+}
+
+tr.shown td.dt-control:before {
+    content: "➖";
+    /* Иконка минуса */
 }
 
 
@@ -104,11 +119,8 @@ main .features {
 main .filter-device {
     padding: 60px;
     padding-top: 80px;
-    padding-left: 20px;
     position: sticky;
-    /* right: 0; */
-    /* top: 0; */
-    width: 85%;
+    width: 100%;
     height: 100vh;
 
 }

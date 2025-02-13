@@ -29,3 +29,7 @@
     /* margin-bottom: 20px; */
     /* Отступ между полями формы */
 }
+
+.btn-add-device {
+    padding-bottom: 40px;
+}
