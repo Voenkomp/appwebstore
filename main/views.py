@@ -24,12 +24,6 @@ class DeviceDetailView(DetailView):
     context_object_name = "printer"
 
 
-class DeviceUpdateView(UpdateView):
-    model = Device
-    template_name = "adddevice/addprinter.html"
-    form_class = DeviceForm
-
-
 class DeviceDeleteView(DeleteView):
     model = Device
     success_url = "/"
