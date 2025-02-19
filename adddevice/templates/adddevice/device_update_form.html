@@ -18,6 +18,14 @@
         <span>{{ error }}</span>
         <!-- {{ form.inv_num }}<br> -->
         <div class="btn-add-device"><button class="btn btn-success" type="submit">Обновить устройство</button></div>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+    </form>
     </form>
 </div>
 

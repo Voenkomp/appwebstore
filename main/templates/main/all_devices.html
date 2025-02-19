@@ -23,7 +23,9 @@
         <tbody>
             {% for device in devices.qs %}
             <tr>
-                <td>{{ device.inv_num }}</td>
+                <td><a href="{% url 'device-detail' device.id %}" style="text-decoration: none; color: #000;">
+                        <i>{{ device.inv_num }}</i>
+                    </a></td>
                 <td>{{ device.prod_mod_dev }}</td>
                 <td>{{ device.serial }}</td>
                 <td class="cartridge-cell">
@@ -45,8 +47,8 @@
                 <td>{{ device.building }}</td>
                 <td>{{ device.location }}</td>
                 <td>{{ device.note }}</td>
-                <td>{{ device.hostname }}</td>
-                <td>{{ device.ip_add }}</td>
+                <td><a href='http://{{ device.hostname }}.dvfu.ru' target="_blank">{{ device.hostname }}</a></td>
+                <td><a href='http://{{ device.ip_add }}' target="_blank">{{ device.ip_add }}</a></td>
 
             </tr>
             {% endfor %}

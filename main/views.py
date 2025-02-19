@@ -1,7 +1,5 @@
 from django.shortcuts import render
-from django.http import JsonResponse
-from .models import Device, Cartridges, ProducerModel
-from adddevice.forms import DeviceForm
+from .models import Device
 from django.views.generic import DetailView, UpdateView, DeleteView
 from .filters import DeviceFilter
 from dal import autocomplete

@@ -94,6 +94,7 @@ main .features {
     /* overflow-y: auto; */
     padding: 4%;
     padding-top: 3%;
+    padding-bottom: 0px;
     /* height: 100vh; */
     /* max-width: 100%; */
 
