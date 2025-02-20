@@ -6,8 +6,8 @@ from dal import autocomplete
 
 
 def index(request):
-    device = Device.objects.order_by("id")
-    return render(request, "main/index.html", {"device": device})
+    devices = Device.objects.order_by("id")
+    return render(request, "main/index.html", {"devices": devices})
 
 
 def all_devices(request):

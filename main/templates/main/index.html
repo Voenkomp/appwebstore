@@ -4,11 +4,19 @@
 
 {% block content %}
 
-<div class="features">
-    {% for el in device %}
-    <div class="alert alert-warning">
-        <p> {{ el.building}} {{ el.location}} {{ el.inv_num }} {{ el.producer }} {{ el.model }}</p>
-        <a href="{% url 'device-detail' el.id %}" class="btn btn-warning">Подробнее</a>
+<div>
+    {% for device in devices %}
+    <div class="alert alert-warning device-card">
+        <div class="summary">
+            <p><strong>{{ device.inv_num }}</strong></p>
+            <p><strong>{{ device.model }}</strong></p>
+            <p><strong>{{ device.building }} {{ device.location }}</strong></p>
+        </div>
+        <div class="details">
+            <p><strong>{{ device.serial }}</strong></p>
+            <p><strong>{{ device.hostname }}</strong></p>
+        </div>
+        <a href="{{ device.get_absolute_url }}" class="btn btn-warning">Подробнее</a>
     </div>
     {% endfor %}
 </div>

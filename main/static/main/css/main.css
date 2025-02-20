@@ -80,10 +80,10 @@ aside ul a:hover {
 
 main .features {
     float: left;
-    margin-top: 100px;
-    margin-left: 100px;
+    /* margin-top: 100px; */
+    /* margin-left: 100px; */
     text-align: left;
-    width: 75%;
+    width: 100%;
 }
 
 /* Настройки положения таблицы на странице 'все устройства' */
@@ -100,20 +100,11 @@ main .features {
 
 }
 
-td.dt-control {
+
+/* td.dt-control {
     text-align: center;
     cursor: pointer;
-}
-
-td.dt-control:before {
-    content: "➕";
-    /* Иконка плюса */
-}
-
-tr.shown td.dt-control:before {
-    content: "➖";
-    /* Иконка минуса */
-}
+} */
 
 
 /* Стили фильтра для поиска в таблице на странице "все устройства" */
@@ -167,6 +158,43 @@ main .lower {
 
 .list-cartridge {
     margin-bottom: 0px;
+}
+
+/* Раздел со стилями для карточек на главной странице */
+.device-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px;
+    width: 250px;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.device-card:hover {
+    background-color: #f0f0f0;
+}
+
+.device-card .details {
+    display: none;
+}
+
+.device-card:hover .details {
+    display: block;
+}
+
+.more-info-btn {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.more-info-btn:hover {
+    background-color: #0056b3;
 }
 
 /* .select2-container .select2-selection--single .select2-selection__rendered {
