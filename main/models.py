@@ -44,6 +44,7 @@ class Device(models.Model):
     note = models.CharField("Примечание", max_length=250, blank=True)
     hostname = models.CharField("Hostname", max_length=30, blank=True)
     ip_add = models.CharField("ip-адрес", max_length=30, blank=True)
+    favorite = models.BooleanField("Избранное", default=False)
 
     def __str__(self):
         return f"{self.inv_num} {self.prod_mod_dev} {self.building} {self.location}"

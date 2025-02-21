@@ -6,7 +6,7 @@ from dal import autocomplete
 
 
 def index(request):
-    devices = Device.objects.order_by("id")
+    devices = Device.objects.filter(favorite=True)
     return render(request, "main/index.html", {"devices": devices})
 
 
