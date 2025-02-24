@@ -1,13 +1,14 @@
 from django.shortcuts import render
-from .models import Device
+from django.http import HttpResponseRedirect
+from .models import Device, Cartridges
 from django.views.generic import DetailView, UpdateView, DeleteView
 from .filters import DeviceFilter
 from dal import autocomplete
 
 
 def index(request):
-    devices = Device.objects.filter(favorite=True)
-    return render(request, "main/index.html", {"devices": devices})
+    favorite_devices = Device.objects.filter(favorite=True)
+    return render(request, "main/index.html", {"devices": favorite_devices})
 
 
 def all_devices(request):
@@ -19,7 +20,22 @@ def all_devices(request):
 class DeviceDetailView(DetailView):
     model = Device
     template_name = "main/detail_device.html"
-    context_object_name = "printer"
+    context_object_name = "device"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        device = self.object
+        producer_model = device.prod_mod_dev
+        cartridges = Cartridges.objects.filter(prod_mod=producer_model)
+        context["cartridges"] = cartridges
+        return context
+
+    def post(self, request, *args, **kwargs):
+        device = self.get_object()
+        device.favorite = not device.favorite
+        device.save()
+
+        return HttpResponseRedirect(self.request.path)
 
 
 class DeviceDeleteView(DeleteView):

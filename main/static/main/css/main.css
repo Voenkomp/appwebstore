@@ -78,12 +78,11 @@ aside ul a:hover {
     margin-left: 0px;
 }
 
-main .features {
+main .detail-info {
     float: left;
-    /* margin-top: 100px; */
-    /* margin-left: 100px; */
     text-align: left;
-    width: 100%;
+    margin: 100px;
+    width: 30%;
 }
 
 /* Настройки положения таблицы на странице 'все устройства' */

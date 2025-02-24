@@ -1,13 +1,36 @@
 {% extends 'main/layout.html' %}
 
-{% block title %}{{ printer.inv_num }}{% endblock %}
+{% block title %}{{ device.inv_num }}{% endblock %}
 
 {% block content %}
 
-<div class="features">
-    <h1>{{ printer.inv_num }}</h1>
-    <a href="{% url 'device-delete' printer.id %}" class="btn btn-danger">Удалить устройство</a>
-    <a href="{% url 'device-update' printer.id %}" class="btn btn-info">Редактировать</a>
+<div class="detail-info">
+    <h1>{{ device.inv_num }}</h1>
+    <p>{{ device.serial }}</p>
+    {% for cartridge in cartridges %}
+    <p>{{ cartridge }}</p>
+    {% endfor %}
+    <p>{{ device.prod_mod_dev }}</p>
+    <p>{{ device.building }}</p>
+    <p>{{ device.location }}</p>
+    <p>{{ device.note }}</p>
+    <p>{{ device.hostname }}</p>
+    <p>{{ device.ip_add }}</p>
+    <a href="{% url 'device-delete' device.id %}" class="btn btn-danger">Удалить устройство</a>
+    <a href="{% url 'device-update' device.id %}" class="btn btn-info">Редактировать</a>
+
+</div>
+<div>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-check form-switch">
+            <input class="form-check-input" type='checkbox' name="favorite" {% if device.favorite %}checked{% endif %}
+                onchange="this.form.submit();" id="flexSwitchCheckChecked">
+            <label class="form-check-label" for="flexSwitchCheckChecked">Сделать избранным устройством</label>
+        </div>
+    </form>
+    <a href="{% url 'home' %}">Отправиться на главную</a>
 </div>
 
+<div>Проверка как будет рабоатть</div>
 {% endblock %}
