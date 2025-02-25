@@ -6,21 +6,35 @@
 
 <div class="detail-info">
     <h1>{{ device.inv_num }}</h1>
-    <p>{{ device.serial }}</p>
-    {% for cartridge in cartridges %}
-    <p>{{ cartridge }}</p>
-    {% endfor %}
-    <p>{{ device.prod_mod_dev }}</p>
-    <p>{{ device.building }}</p>
-    <p>{{ device.location }}</p>
-    <p>{{ device.note }}</p>
-    <p>{{ device.hostname }}</p>
-    <p>{{ device.ip_add }}</p>
-    <a href="{% url 'device-delete' device.id %}" class="btn btn-danger">Удалить устройство</a>
-    <a href="{% url 'device-update' device.id %}" class="btn btn-info">Редактировать</a>
+    <p class="serial">Серийный номер: {{ device.serial }}</p>
+    <p class="model">Модель: {{ device.prod_mod_dev }}</p>
+    <p class="location">Корпус: {{ device.building }}, Расположение: {{ device.location }}</p>
+    <p class="note">Примечание: {{ device.note }}</p>
+    <p class="hostname">Hostname: {{ device.hostname }}</p>
+    <p class="ip">IP-адрес: {{ device.ip_add }}</p>
 
+    <div class="cartridges">
+        <h2>Совместимые картриджи:</h2>
+        <ul>
+            {% for cartridge in cartridges %}
+            <li>{{ cartridge.cartridge }}</li>
+            {% empty %}
+            <li>Нет совместимых картриджей.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="actions">
+        <a href="{% url 'device-delete' device.id %}" class="btn btn-danger">Удалить устройство</a>
+        <a href="{% url 'device-update' device.id %}" class="btn btn-info">Редактировать</a>
+    </div>
 </div>
-<div>
+
+<div class="sidebar">
+    <div class="device-image">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjr__O2vAvx27W_uzYxtssdgDugdZNnAKxeA&s"
+            alt="Изображение устройства">
+    </div>
     <form method="POST">
         {% csrf_token %}
         <div class="form-check form-switch">
@@ -29,8 +43,7 @@
             <label class="form-check-label" for="flexSwitchCheckChecked">Сделать избранным устройством</label>
         </div>
     </form>
-    <a href="{% url 'home' %}">Отправиться на главную</a>
+    <a href="{% url 'home' %}" class="btn btn-home">На главную</a>
 </div>
-
-<div>Проверка как будет рабоатть</div>
+</div>
 {% endblock %}
