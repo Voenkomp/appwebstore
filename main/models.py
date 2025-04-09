@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class ProducerModel(models.Model):
@@ -45,6 +46,9 @@ class Device(models.Model):
     hostname = models.CharField("Hostname", max_length=30, blank=True)
     ip_add = models.CharField("ip-адрес", max_length=30, blank=True)
     favorite = models.BooleanField(default=False)
+    favorite_users = models.ManyToManyField(
+        User, through="UserFavoriteDevice", related_name="favorite_devices", blank=True
+    )
 
     def __str__(self):
         return f"{self.inv_num} {self.prod_mod_dev} {self.building} {self.location}"
@@ -55,3 +59,12 @@ class Device(models.Model):
     class Meta:
         verbose_name = "Устройство"
         verbose_name_plural = "Устройства"
+
+
+class UserFavoriteDevice(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    device = models.ForeignKey(Device, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ("user", "device")

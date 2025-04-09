@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 from adddevice.views import DeviceUpdateView
+from django.contrib.auth import views as auth_views
+from .views import CustomLoginView, CustomLogoutView
 
 urlpatterns = [
     path("", views.index, name="home"),
@@ -11,4 +13,6 @@ urlpatterns = [
     path(
         "device/<int:pk>/delete", views.DeviceDeleteView.as_view(), name="device-delete"
     ),
+    path("login/", CustomLoginView.as_view(), name="login"),
+    path("logout/", CustomLogoutView.as_view(), name="logout"),
 ]

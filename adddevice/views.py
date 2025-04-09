@@ -6,9 +6,10 @@ from main.models import ProducerModel
 from django.contrib import messages
 from django.views.generic import CreateView, UpdateView
 from main.models import Device
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class DeviceCreateView(CreateView):
+class DeviceCreateView(LoginRequiredMixin, CreateView):
     model = Device
     form_class = DeviceForm
     template_name = "adddevice/addprinter.html"
@@ -27,7 +28,7 @@ class DeviceCreateView(CreateView):
         return super().form_valid(form)
 
 
-class DeviceUpdateView(UpdateView):
+class DeviceUpdateView(LoginRequiredMixin, UpdateView):
     model = Device
     form_class = DeviceForm
     template_name = "adddevice/device_update_form.html"
