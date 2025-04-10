@@ -33,9 +33,9 @@
 
     <div class="describe-window">
         <!-- <h3>Описание</h3> -->
-        <form method="post" action="{% url 'update-descr' device.pk %}">
+        <form method="post" action="{% url 'update-descr' device.id %}">
             {% csrf_token %}
-            <textarea name='decription' class="descr-textarea"
+            <textarea name='description' class="descr-textarea"
                 placeholder="Добавьте описание">{{ device.description|default:"" }}</textarea>
             <button type="submit" class="btn-save-descr">
                 <i class="fas fa-save"></i> Записать

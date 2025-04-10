@@ -20,5 +20,5 @@ urlpatterns = [
         views.toggle_favorite,
         name="toggle_favorite",
     ),
-    path("device/<int:pk>/update-descr", views.update_descr, name="update-descr"),
+    path("device/<int:pk>/update_descr", views.update_descr, name="update-descr"),
 ]
