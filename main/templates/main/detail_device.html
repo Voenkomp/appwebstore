@@ -5,28 +5,42 @@
 {% block content %}
 
 <div class="detail-info">
-    <h1>{{ device.inv_num }}</h1>
-    <p class="serial">Серийный номер: {{ device.serial }}</p>
-    <p class="model">Модель: {{ device.prod_mod_dev }}</p>
-    <p class="location">Корпус: {{ device.building }}, Расположение: {{ device.location }}</p>
-    <p class="note">Примечание: {{ device.note }}</p>
-    <p class="hostname">Hostname: {{ device.hostname }}</p>
-    <p class="ip">IP-адрес: {{ device.ip_add }}</p>
+    <div class="detail-device">
+        <h1>{{ device.inv_num }}</h1>
+        <p class="serial">Серийный номер: {{ device.serial }}</p>
+        <p class="model">Модель: {{ device.prod_mod_dev }}</p>
+        <p class="location">Корпус: {{ device.building }}, Расположение: {{ device.location }}</p>
+        <p class="note">Примечание: {{ device.note }}</p>
+        <p class="hostname">Hostname: {{ device.hostname }}</p>
+        <p class="ip">IP-адрес: {{ device.ip_add }}</p>
 
-    <div class="cartridges">
-        <h2>Совместимые картриджи:</h2>
-        <ul>
-            {% for cartridge in cartridges %}
-            <li>{{ cartridge.cartridge }}</li>
-            {% empty %}
-            <li>Нет совместимых картриджей.</li>
-            {% endfor %}
-        </ul>
+        <div class="cartridges">
+            <h2>Совместимые картриджи:</h2>
+            <ul>
+                {% for cartridge in cartridges %}
+                <li>{{ cartridge.cartridge }}</li>
+                {% empty %}
+                <li>Нет совместимых картриджей.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="actions">
+            <a href="{% url 'device-delete' device.id %}" class="btn btn-danger">Удалить устройство</a>
+            <a href="{% url 'device-update' device.id %}" class="btn btn-info">Редактировать</a>
+        </div>
     </div>
 
-    <div class="actions">
-        <a href="{% url 'device-delete' device.id %}" class="btn btn-danger">Удалить устройство</a>
-        <a href="{% url 'device-update' device.id %}" class="btn btn-info">Редактировать</a>
+    <div class="describe-window">
+        <!-- <h3>Описание</h3> -->
+        <form method="post" action="{% url 'update-descr' device.pk %}">
+            {% csrf_token %}
+            <textarea name='decription' class="descr-textarea"
+                placeholder="Добавьте описание">{{ device.description|default:"" }}</textarea>
+            <button type="submit" class="btn-save-descr">
+                <i class="fas fa-save"></i> Записать
+            </button>
+        </form>
     </div>
 </div>
 
@@ -35,12 +49,12 @@
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjr__O2vAvx27W_uzYxtssdgDugdZNnAKxeA&s"
             alt="Изображение устройства">
     </div>
-    <form method="POST">
+    <form method="POST" action="{% url 'toggle_favorite' device.pk %}">
         {% csrf_token %}
         <div class="form-check form-switch">
-            <input class="form-check-input" type='checkbox' name="favorite" {% if device.favorite %}checked{% endif %}
-                onchange="this.form.submit();" id="flexSwitchCheckChecked">
-            <label class="form-check-label" for="flexSwitchCheckChecked">Сделать избранным устройством</label>
+            <input class="form-check-input" type='checkbox' {% if request.user in device.favorite_users.all %} checked
+                {% endif %} onchange="this.form.submit();" id="favorite-switch-{{ device.pk }}">
+            <label class="form-check-label" for="favorite-switch-{{ device.pk }}">Сделать избранным устройством</label>
         </div>
     </form>
     <a href="{% url 'home' %}" class="btn btn-home">На главную</a>

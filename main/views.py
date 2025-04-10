@@ -6,6 +6,7 @@ from .filters import DeviceFilter
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import get_object_or_404, redirect
 
 
 class CustomLoginView(LoginView):
@@ -20,7 +21,7 @@ class CustomLogoutView(LogoutView):
 @login_required
 def index(request):
     # favorite_devices = request.user.favorite_devices.all()
-    favorite_devices = Device.objects.filter(favorite=True)
+    favorite_devices = request.user.favorite_devices.all()
     return render(request, "main/index.html", {"devices": favorite_devices})
 
 
@@ -29,6 +30,31 @@ def all_devices(request):
     devices = Device.objects.prefetch_related("prod_mod_dev__model").all()
     filter = DeviceFilter(request.GET, queryset=devices)
     return render(request, "main/all_devices.html", {"devices": filter})
+
+
+@login_required
+def toggle_favorite(request, pk):
+    device = get_object_or_404(Device, id=pk)
+
+    if request.user in device.favorite_users.all():
+        device.favorite_users.remove(request.user)
+    else:
+        device.favorite_users.add(request.user)
+
+    return redirect(request.META.get("HTTP_REFERER", "home"))
+
+
+@login_required
+def update_descr(request, pk):
+    device = get_object_or_404(Device, pk=pk)
+
+    if request.method == "POST":
+        device.description = request.POST.get("description", "").strip()
+        device.save()
+
+        return redirect("device-detail", pk=device.pk)
+
+    return redirect("device_detail", pk=device.pk)
 
 
 class DeviceDetailView(LoginRequiredMixin, DetailView):
@@ -43,13 +69,6 @@ class DeviceDetailView(LoginRequiredMixin, DetailView):
         cartridges = Cartridges.objects.filter(prod_mod=producer_model)
         context["cartridges"] = cartridges
         return context
-
-    def post(self, request, *args, **kwargs):
-        device = self.get_object()
-        device.favorite = not device.favorite
-        device.save()
-
-        return HttpResponseRedirect(self.request.path)
 
 
 class DeviceDeleteView(LoginRequiredMixin, DeleteView):

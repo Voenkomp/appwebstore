@@ -1,5 +1,5 @@
 body {
-    background: rgba(212, 244, 251, 0.15);
+    background: #d4f4fb26;
     /* display: flex; */
 }
 
@@ -25,15 +25,6 @@ aside {
     padding: 30px;
 }
 
-/* main {
-    flex-grow: 1;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: 1fr 330px;
-    height: 100vh;
-
-} */
-
 /* ДОБАВЛЕНО ИЗ DEEPSEEK */
 main {
     display: flex;
@@ -46,13 +37,22 @@ main {
     height: 100vh;
 }
 
+.detail-device {
+    padding: 2%;
+}
+
 .detail-info {
+    display: flex;
+    gap: 70px;
+    align-items: flex-start;
     flex: 1;
     background: white;
     padding: 20px;
+    padding-left: 50px;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 
 .detail-info h1 {
     font-size: 2rem;
@@ -240,12 +240,6 @@ aside ul a:hover {
 }
 
 
-/* td.dt-control {
-    text-align: center;
-    cursor: pointer;
-} */
-
-
 /* Стили фильтра для поиска в таблице на странице "все устройства" */
 main .filter-device {
     /* width: 330px; */
@@ -273,23 +267,14 @@ main .lower {
     margin-top: 15px;
 }
 
-/* .cartridge-cell {
-    cursor: pointer;
-    /* Курсор в виде указателя
-} */
-
 .cartridge-summary {
     display: block;
     /* Показываем сокращённое содержимое */
 }
 
 .cartridge-details {
-    /* cursor: pointer; */
     display: none;
-    /* Скрываем полное содержимое */
     padding: 10px;
-    /* background: #f9f9f9; */
-    /* border: 1px solid #ddd; */
     margin-top: 5px;
 }
 
@@ -341,9 +326,213 @@ main .lower {
     background-color: #0056b3;
 }
 
-/* .select2-container .select2-selection--single .select2-selection__rendered {
-    padding-right: 30px !important; */
-/* Смещение текста вправо */
-/* padding-right: 10px !important; */
-/* Чтобы стрелка не налезала */
-/* } */
+
+
+
+/* Основные стили для страницы авторизации*/
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #d4f4fb26 0%, #d4f4fb26 100%);
+    padding: 20px;
+}
+
+/* Карточка авторизации */
+.auth-card {
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Заголовок */
+.auth-header {
+    background: linear-gradient(to right, #74a8e4, #5b95d8);
+    /* background: linear-gradient(to right, #4a76a8, #3a5f8a); */
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
+
+.auth-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Форма */
+.auth-form {
+    padding: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #4a5568;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #4a76a8;
+    box-shadow: 0 0 0 3px rgba(74, 118, 168, 0.2);
+    outline: none;
+}
+
+/* Кнопка */
+.auth-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to right, #74a8e4, #5b95d8);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.auth-btn:hover {
+    background: linear-gradient(to right, #3a5f8a, #2a4a6a);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Ошибки */
+.auth-error {
+    padding: 15px;
+    margin: 0 30px 30px;
+    background: #fff5f5;
+    color: #e53e3e;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: shake 0.5s;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20%,
+    60% {
+        transform: translateX(-5px);
+    }
+
+    40%,
+    80% {
+        transform: translateX(5px);
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-card {
+        border-radius: 0;
+        max-width: 100%;
+        min-height: 100vh;
+    }
+
+    .auth-header {
+        padding: 20px;
+    }
+
+    .auth-form {
+        padding: 20px;
+    }
+}
+
+/* Конец стилей для страницы авторизации */
+
+/* Описание стилей для формы описания на странице устройства */
+.describe-window {
+    flex: 1;
+    background: white;
+    padding: 70px;
+    padding-top: 2%;
+    border-radius: 8px;
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+    position: sticky;
+    /* top: 20px; */
+    /* height: 100vh; */
+}
+
+.describe-window h3 {
+    margin-top: 0;
+    color: #2c3e50;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.descr-textarea {
+    width: 100%;
+    min-height: 400px;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    resize: vertical;
+    font-family: inherit;
+    margin-bottom: 15px;
+}
+
+
+.btn-save-descr {
+    width: 100%;
+    padding: 10px;
+    background: #4a76a8;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-save-descr :hover {
+    background: #3a5f8a;
+}
+
+/* Конец описания стилей для формы описания на странице устройства */

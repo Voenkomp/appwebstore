@@ -5,7 +5,7 @@
 {% block content %}
 
 <div>
-    {% for device in devices %}
+    {% for device in request.user.favorite_devices.all %}
     <div class="alert alert-warning device-card">
         <div class="summary">
             <p><strong>{{ device.inv_num }}</strong></p>

@@ -15,4 +15,10 @@ urlpatterns = [
     ),
     path("login/", CustomLoginView.as_view(), name="login"),
     path("logout/", CustomLogoutView.as_view(), name="logout"),
+    path(
+        "device/<int:pk>/toggle_favorite/",
+        views.toggle_favorite,
+        name="toggle_favorite",
+    ),
+    path("device/<int:pk>/update-descr", views.update_descr, name="update-descr"),
 ]

@@ -43,9 +43,9 @@ class Device(models.Model):
     building = models.CharField("Корпус", max_length=10)
     location = models.CharField("Расположение", max_length=50)
     note = models.CharField("Примечание", max_length=250, blank=True)
+    description = models.TextField("Описание", blank=True, default="")
     hostname = models.CharField("Hostname", max_length=30, blank=True)
     ip_add = models.CharField("ip-адрес", max_length=30, blank=True)
-    favorite = models.BooleanField(default=False)
     favorite_users = models.ManyToManyField(
         User, through="UserFavoriteDevice", related_name="favorite_devices", blank=True
     )
