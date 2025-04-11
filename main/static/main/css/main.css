@@ -289,43 +289,57 @@ main .lower {
     margin-bottom: 0px;
 }
 
-/* Раздел со стилями для карточек на главной странице */
+/* Описание стилей для карточек на главной странице */
+.favorites-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    /* margin-left: 270px; */
+}
+
 .device-card {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 15px;
-    margin: 10px;
-    width: 250px;
-    display: inline-block;
-    transition: background-color 0.3s;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    width: 240px;
+    transition: all 0.3s ease;
+
+
 }
 
 .device-card:hover {
-    background-color: #f0f0f0;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    background: #f8fafc;
 }
 
-.device-card .details {
-    display: none;
+.device-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #2d3748;
 }
 
-.device-card:hover .details {
-    display: block;
+.device-meta {
+    font-size: 0.9rem;
+    color: #4a5568;
+    margin-bottom: 8px;
 }
 
-.more-info-btn {
-    margin-top: 10px;
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
+.device-status {
+    margin-top: auto;
+    /* Прижимаем к низу */
+    padding-top: 10px;
+    font-size: 0.8rem;
+    color: #718096;
 }
 
-.more-info-btn:hover {
-    background-color: #0056b3;
-}
 
+
+/* Конец описания стилей для карточек на главной странице */
 
 
 
@@ -501,24 +515,55 @@ main .lower {
     /* height: 100vh; */
 }
 
-.describe-window h3 {
-    margin-top: 0;
-    color: #2c3e50;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-}
-
-.descr-textarea {
-    width: 100%;
-    min-height: 400px;
-    padding: 12px;
+.editable-content {
     border: 1px solid #e0e0e0;
-    border-radius: 6px;
-    resize: vertical;
-    font-family: inherit;
-    margin-bottom: 15px;
+    border-radius: 8px;
+    padding: 16px;
+    min-height: 400px;
+    margin-bottom: 16px;
+    background: white;
+    outline: none;
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.6;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
 }
 
+.editable-content:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.editable-content:empty::before {
+    content: attr(placeholder);
+    color: #9ca3af;
+    font-style: italic;
+}
+
+.toolbar {
+    display: inline-flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding: 8px;
+    background: #f9fafb;
+    border-radius: 6px;
+}
+
+.toolbar button {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #4b5563;
+    font-size: 14px;
+}
+
+.toolbar button:hover {
+    background: #f3f4f6;
+    color: #111827;
+}
 
 .btn-save-descr {
     width: 100%;
@@ -531,7 +576,7 @@ main .lower {
     transition: background 0.3s;
 }
 
-.btn-save-descr :hover {
+.btn-save-descr:hover {
     background: #3a5f8a;
 }
 

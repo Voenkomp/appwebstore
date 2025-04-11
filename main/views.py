@@ -52,7 +52,7 @@ def update_descr(request, pk):
         device.description = request.POST.get("description", "").strip()
         device.save()
 
-        return redirect("device-detail", pk=pk)
+        return redirect("device-detail", pk=device.pk)
 
     # return redirect("device_detail", pk=device.pk)
 

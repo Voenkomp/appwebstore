@@ -4,21 +4,15 @@
 
 {% block content %}
 
-<div>
+<div class="favorites-container">
     {% for device in request.user.favorite_devices.all %}
-    <div class="alert alert-warning device-card">
-        <div class="summary">
-            <p><strong>{{ device.inv_num }}</strong></p>
-            <p><strong>{{ device.model }}</strong></p>
-            <p><strong>{{ device.building }} {{ device.location }}</strong></p>
-        </div>
-        <div class="details">
-            <p><strong>{{ device.serial }}</strong></p>
-            <p><strong>{{ device.hostname }}</strong></p>
-        </div>
+    <div class="device-card">
+        <h3 class='device-title'>{{ device.inv_num }}</h3>
+        <div class="device-meta">{{ device.prod_mod_dev }}</div>
+        <p><strong>{{ device.building }} {{ device.location }}</strong></p>
         <a href="{{ device.get_absolute_url }}" class="btn btn-warning">Подробнее</a>
-
     </div>
+
     {% endfor %}
 </div>
 
