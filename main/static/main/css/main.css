@@ -35,6 +35,8 @@ main {
     /* align-items: center; */
     /* background-color: #f9f9f9; */
     height: 100vh;
+    /* overflow-y: auto;
+    scrollbar-width: none; */
 }
 
 .detail-device {
@@ -295,6 +297,8 @@ main .lower {
     flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
+    overflow-y: auto;
+    scrollbar-width: none;
     /* margin-left: 270px; */
 }
 
@@ -306,7 +310,9 @@ main .lower {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     width: 240px;
     transition: all 0.3s ease;
-
+    display: flex;
+    flex-direction: column;
+    height: 230px;
 
 }
 
@@ -329,15 +335,10 @@ main .lower {
     margin-bottom: 8px;
 }
 
-.device-status {
+.btn-more {
     margin-top: auto;
-    /* Прижимаем к низу */
-    padding-top: 10px;
-    font-size: 0.8rem;
-    color: #718096;
+    padding-top: 15px;
 }
-
-
 
 /* Конец описания стилей для карточек на главной странице */
 

@@ -10,7 +10,9 @@
         <h3 class='device-title'>{{ device.inv_num }}</h3>
         <div class="device-meta">{{ device.prod_mod_dev }}</div>
         <p><strong>{{ device.building }} {{ device.location }}</strong></p>
-        <a href="{{ device.get_absolute_url }}" class="btn btn-warning">Подробнее</a>
+        <div class="btn-more">
+            <a href="{{ device.get_absolute_url }}" class="btn btn-warning ">Подробнее</a>
+        </div>
     </div>
 
     {% endfor %}

@@ -11,8 +11,9 @@
         <p class="model">Модель: {{ device.prod_mod_dev }}</p>
         <p class="location">Корпус: {{ device.building }}, Расположение: {{ device.location }}</p>
         <p class="note">Примечание: {{ device.note }}</p>
-        <p class="hostname">Hostname: {{ device.hostname }}</p>
-        <p class="ip">IP-адрес: {{ device.ip_add }}</p>
+        <p class="hostname">Hostname: <a href='http://{{ device.hostname }}.dvfu.ru' target="_blank">
+                {{ device.hostname}}</a></p>
+        <p class="ip">IP-адрес: <a href='http://{{ device.ip_add }}' target="_blank">{{ device.ip_add }}</a></p>
 
         <div class="cartridges">
             <h2>Совместимые картриджи:</h2>
