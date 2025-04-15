@@ -43,6 +43,13 @@
             </a>
         </ul>
 
+        <div class="btn-exit">
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger"><i class="fa-solid fa-door-open"></i> Выйти</button>
+            </form>
+        </div>
+
     </aside>
     <main>
         {% block content %}

@@ -1,24 +1,13 @@
 {% extends 'main/layout.html' %}
 
-
-{% block title %}Добавить устройство{% endblock %}
+{% block title %}Изменить{% endblock %}
 
 {% block content %}
 <div class="addset">
     <form method="post" class="add-printer-form">
         {% csrf_token %}
-        <div class="formsetting">
-            <div class="text-danger">
-                {{ form.inv_num.errors.0 }}
-            </div>
-            {{ form.inv_num }}
-        </div>
-        <div class="formsetting">
-            <div class="text-danger">
-                {{ form.serial.errors.0 }}
-            </div>
-            {{ form.serial }}
-        </div>
+        <div class="formsetting">{{ form.inv_num }}</div>
+        <div class="formsetting">{{ form.serial }}</div>
         <div class="formsetting">{{ form.prod_mod_dev }}</div>
         <div class="formsetting">{{ form.building }}</div>
         <div class="formsetting">{{ form.location }}</div>
@@ -26,9 +15,9 @@
         <div class="formsetting">{{ form.hostname }}</div>
         <div class="formsetting">{{ form.ip_add }}</div>
         <!-- {{ form.as_p }} -->
-        <!-- <span>{{ error }}</span> -->
+        <span>{{ error }}</span>
         <!-- {{ form.inv_num }}<br> -->
-        <div class="btn-add-device"><button class="btn btn-success" type="submit">Добавить устройство</button></div>
+        <div class="btn-add-device"><button class="btn btn-success" type="submit">Обновить устройство</button></div>
         {% if messages %}
         {% for message in messages %}
         <div class="alert alert-{{ message.tags }}" role="alert">
@@ -36,6 +25,7 @@
         </div>
         {% endfor %}
         {% endif %}
+    </form>
     </form>
 </div>
 

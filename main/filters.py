@@ -63,7 +63,3 @@ class DeviceFilter(django_filters.FilterSet):
             attrs={"class": "form-control form-filter", "placeholder": "IP-адрес"}
         ),
     )
-
-    # class Meta:
-    #     model = Device
-    #     fields = ["inv_num", "serial", "prod_mod_dev", "building"]

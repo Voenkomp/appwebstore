@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import db_setting
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -81,11 +82,11 @@ WSGI_APPLICATION = "store.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "storedb2_0",
-        "USER": "admin",
-        "PASSWORD": "doyouwannaenter",
-        "HOST": "192.168.1.56",
-        "PORT": "32768",
+        "NAME": db_setting.setting["NAME"],
+        "USER": db_setting.setting["USER"],
+        "PASSWORD": db_setting.setting["PASSWORD"],
+        "HOST": db_setting.setting["HOST"],
+        "PORT": db_setting.setting["PORT"],
     }
 }
 
@@ -119,6 +120,12 @@ TIME_ZONE = "Vladivostok"
 USE_I18N = True
 
 USE_TZ = True
+
+# Login authorization function
+
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "all-devices"
+LOGOUT_REDIRECT_URL = "login"
 
 
 # Static files (CSS, JavaScript, Images)

@@ -4,12 +4,17 @@
 
 {% block content %}
 
-<div class="features">
-    {% for el in device %}
-    <div class="alert alert-warning">
-        <p> {{ el.building}} {{ el.location}} {{ el.inv_num }} {{ el.producer }} {{ el.model }}</p>
-        <a href="{% url 'device-detail' el.id %}" class="btn btn-warning">Подробнее</a>
+<div class="favorites-container">
+    {% for device in request.user.favorite_devices.all %}
+    <div class="device-card">
+        <h3 class='device-title'>{{ device.inv_num }}</h3>
+        <div class="device-meta">{{ device.prod_mod_dev }}</div>
+        <p><strong>{{ device.building }} {{ device.location }}</strong></p>
+        <div class="btn-more">
+            <a href="{{ device.get_absolute_url }}" class="btn btn-warning ">Подробнее</a>
+        </div>
     </div>
+
     {% endfor %}
 </div>
 

@@ -17,7 +17,7 @@ class DeviceForm(ModelForm):
             "hostname",
             "ip_add",
         ]
-        labels = {label: "" for label in fields}
+        # labels = {label: "" for label in fields}
         widgets = {
             "inv_num": TextInput(
                 attrs={"class": "form-control", "placeholder": "Инвентарный номер"}
@@ -49,20 +49,3 @@ class DeviceForm(ModelForm):
                 attrs={"class": "form-control", "placeholder": "ip-адрес"}
             ),
         }
-
-    def clean(self):
-        cleaned_data = super().clean()
-        inv_num = cleaned_data.get("inv_num")
-        serial = cleaned_data.get("serial")
-
-        if Device.objects.filter(inv_num=inv_num).exists():
-            self.add_error(
-                "inv_num", "Устройство с таким инвентарным номером уже существует"
-            )
-
-        if Device.objects.filter(serial=serial).exists():
-            self.add_error(
-                "serial", "Устройство с таким серийным номером уже существует"
-            )
-
-        return cleaned_data

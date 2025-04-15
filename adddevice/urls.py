@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("", views.addprinter, name="addprinter"),
+    path("", views.DeviceCreateView.as_view(), name="addprinter"),
     path(
         "device-autocomplete/",
         views.ProducerModelAutocomlete.as_view(),
