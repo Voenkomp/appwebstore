@@ -32,7 +32,7 @@ class Cartridges(models.Model):
 
 
 class Device(models.Model):
-    inv_num = models.CharField("Инвентарный номер", max_length=15)
+    inv_num = models.CharField("Инвентарный номер", max_length=17)
     serial = models.CharField("Серийный номер", max_length=20, blank=True)
     prod_mod_dev = models.ForeignKey(
         ProducerModel,

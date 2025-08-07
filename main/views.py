@@ -88,3 +88,8 @@ class DeviceDeleteView(LoginRequiredMixin, DeleteView):
 @login_required
 def about(request):
     return render(request, "main/about.html")
+
+
+@login_required
+def whatsnew(request):
+    return render(request, "main/whatsnew.html")
