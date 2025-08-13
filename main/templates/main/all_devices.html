@@ -21,7 +21,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for device in devices.qs %}
+            {% for device in devices.qs|slice:":100" %}
             <tr>
                 <td><a href="{% url 'device-detail' device.id %}" style="text-decoration: none; color: #000;">
                         <i>{{ device.inv_num }}</i>
