@@ -3,7 +3,6 @@
 {% block title %}Главная страница{% endblock %}
 
 {% block content %}
-
 <div class="favorites-container">
     {% for device in request.user.favorite_devices.all %}
     <div class="device-card">

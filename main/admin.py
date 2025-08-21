@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ProducerModel, Cartridges, Device
+from .models import ProducerModel, Cartridges, Device, UserSettings
 
 
 # Register your models here.
@@ -22,3 +22,8 @@ class CartridgesAdmin(admin.ModelAdmin):
 @admin.register(Device)
 class DeviceAdmin(admin.ModelAdmin):
     autocomplete_fields = ["prod_mod_dev"]
+
+
+@admin.register(UserSettings)
+class UserSettingsAdmin(admin.ModelAdmin):
+    autocomplete_fields = ["user"]

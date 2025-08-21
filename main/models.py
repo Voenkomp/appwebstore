@@ -68,3 +68,9 @@ class UserFavoriteDevice(models.Model):
 
     class Meta:
         unique_together = ("user", "device")
+
+
+class UserSettings(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    note_filter = models.BooleanField(default=0)
+    default_building = models.JSONField(default=list)

@@ -1,8 +1,10 @@
 import django_filters
-from django.forms import TextInput
+from django.forms import TextInput, CheckboxSelectMultiple
+from .models import Device, UserSettings
 
 
 class DeviceFilter(django_filters.FilterSet):
+
     inv_num = django_filters.CharFilter(
         field_name="inv_num",
         lookup_expr="icontains",
@@ -32,12 +34,12 @@ class DeviceFilter(django_filters.FilterSet):
         ),
     )
 
-    building = django_filters.CharFilter(
+    building = django_filters.MultipleChoiceFilter(
+        field_name="building",
         lookup_expr="icontains",
         label="",
-        widget=TextInput(
-            attrs={"class": "form-control form-filter", "placeholder": "Здание"}
-        ),
+        widget=CheckboxSelectMultiple(),
+        choices=[],
     )
 
     location = django_filters.CharFilter(
@@ -63,3 +65,35 @@ class DeviceFilter(django_filters.FilterSet):
             attrs={"class": "form-control form-filter", "placeholder": "IP-адрес"}
         ),
     )
+
+    class Meta:
+        model = Device
+        fields = ["building"]
+
+    def __init__(self, data=None, queryset=None, request=None, *args, **kwargs):
+
+        self.note_check = kwargs.pop("note_check", None)
+        super().__init__(data, queryset, request=request, *args, **kwargs)
+        if self.note_check:
+            self.filters["note"] = django_filters.CharFilter(
+                field_name="note",
+                lookup_expr="icontains",
+                label="",
+                widget=TextInput(
+                    attrs={
+                        "class": "form-control form-filter",
+                        "placeholder": "Примечание",
+                    }
+                ),
+            )
+
+        buildings = Device.objects.values_list("building", flat=True).distinct()
+        self.filters["building"].extra["choices"] = [(b, b) for b in buildings]
+
+        if request and not data:
+            try:
+                settings = UserSettings.objects.get(user=request.user)
+                if settings.default_building:
+                    self.form.fields["building"].initial = settings.default_building
+            except UserSettings.DoesNotExist:
+                pass

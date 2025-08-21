@@ -89,7 +89,17 @@
 <div class="filter-device">
     <h3 class="display-6">Найди меня</h3>
     <form method="get" class="custom-form">
-        {{ devices.form }}
+        {{ devices.form.inv_num}}
+        {{ devices.form.serial}}
+        {{ devices.form.prod_mod_dev}}
+        {{ devices.form.building}}
+        {{ devices.form.location}}
+        {% if devices.form.note %}
+        {{ devices.form.note}}
+        {% endif %}
+        {{ devices.form.hostname}}
+        {{ devices.form.ip_add}}
+
         <button class="btn btn-success" type="submit">Найти</button>
     </form>
 </div>

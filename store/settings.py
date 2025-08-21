@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     "main",
     "adddevice",
     "django_filters",
+    "fontawesomefree",
     "dal",
     "dal_select2",
     "django.contrib.admin",

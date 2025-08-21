@@ -8,6 +8,7 @@ urlpatterns = [
     path("", views.index, name="home"),
     path("all/", views.all_devices, name="all-devices"),
     path("about/", views.about, name="about"),
+    path("settings/", views.settings, name="settings"),
     path("whatsnew/", views.whatsnew, name="whatsnew"),
     path("device/<int:pk>", views.DeviceDetailView.as_view(), name="device-detail"),
     path("device/<int:pk>/update", DeviceUpdateView.as_view(), name="device-update"),
