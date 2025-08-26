@@ -1,5 +1,5 @@
 import django_filters
-from django.forms import TextInput, CheckboxSelectMultiple
+from django.forms import TextInput, CheckboxSelectMultiple, SelectMultiple, Select
 from .models import Device, UserSettings
 
 
@@ -11,7 +11,7 @@ class DeviceFilter(django_filters.FilterSet):
         label="",
         widget=TextInput(
             attrs={
-                "class": "form-control form-filter",
+                "class": "form-control form-filter custom-form-filter",
                 "placeholder": "Инвентарный номер",
             }
         ),
@@ -21,7 +21,10 @@ class DeviceFilter(django_filters.FilterSet):
         lookup_expr="icontains",
         label="",
         widget=TextInput(
-            attrs={"class": "form-control form-filter", "placeholder": "Серийный номер"}
+            attrs={
+                "class": "form-control form-filter custom-form-filter",
+                "placeholder": "Серийный номер",
+            }
         ),
     )
 
@@ -30,15 +33,18 @@ class DeviceFilter(django_filters.FilterSet):
         lookup_expr="icontains",
         label="",
         widget=TextInput(
-            attrs={"class": "form-control form-filter", "placeholder": "Модель"}
+            attrs={
+                "class": "form-control form-filter custom-form-filter",
+                "placeholder": "Модель",
+            }
         ),
     )
 
     building = django_filters.MultipleChoiceFilter(
         field_name="building",
-        lookup_expr="icontains",
+        lookup_expr="iexact",
         label="",
-        widget=CheckboxSelectMultiple(),
+        widget=CheckboxSelectMultiple(attrs={"class": "form-check-input"}),
         choices=[],
     )
 
@@ -46,7 +52,10 @@ class DeviceFilter(django_filters.FilterSet):
         lookup_expr="icontains",
         label="",
         widget=TextInput(
-            attrs={"class": "form-control form-filter", "placeholder": "Расположение"}
+            attrs={
+                "class": "form-control form-filter custom-form-filter",
+                "placeholder": "Расположение",
+            }
         ),
     )
 
@@ -54,7 +63,10 @@ class DeviceFilter(django_filters.FilterSet):
         lookup_expr="icontains",
         label="",
         widget=TextInput(
-            attrs={"class": "form-control form-filter", "placeholder": "Hostname"}
+            attrs={
+                "class": "form-control form-filter custom-form-filter",
+                "placeholder": "Hostname",
+            }
         ),
     )
 
@@ -62,7 +74,10 @@ class DeviceFilter(django_filters.FilterSet):
         lookup_expr="icontains",
         label="",
         widget=TextInput(
-            attrs={"class": "form-control form-filter", "placeholder": "IP-адрес"}
+            attrs={
+                "class": "form-control form-filter custom-form-filter",
+                "placeholder": "IP-адрес",
+            }
         ),
     )
 
@@ -81,7 +96,7 @@ class DeviceFilter(django_filters.FilterSet):
                 label="",
                 widget=TextInput(
                     attrs={
-                        "class": "form-control form-filter",
+                        "class": "form-control form-filter custom-form-filter",
                         "placeholder": "Примечание",
                     }
                 ),

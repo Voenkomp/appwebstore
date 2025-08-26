@@ -46,6 +46,6 @@ class DeviceForm(ModelForm):
                 attrs={"class": "form-control", "placeholder": "Hostname"}
             ),
             "ip_add": TextInput(
-                attrs={"class": "form-control", "placeholder": "ip-адрес"}
+                attrs={"class": "form-control", "placeholder": "IP-адрес"}
             ),
         }

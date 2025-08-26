@@ -7,6 +7,7 @@
 <div class="addset">
     <form method="post" class="add-printer-form">
         {% csrf_token %}
+        <!-- <h3>Печатное устройство</h3> -->
         <div class="formsetting">
             <div class="text-danger">
                 {{ form.inv_num.errors.0 }}
@@ -25,10 +26,7 @@
         <div class="formsetting">{{ form.note }}</div>
         <div class="formsetting">{{ form.hostname }}</div>
         <div class="formsetting">{{ form.ip_add }}</div>
-        <!-- {{ form.as_p }} -->
-        <!-- <span>{{ error }}</span> -->
-        <!-- {{ form.inv_num }}<br> -->
-        <div class="btn-add-device"><button class="btn btn-success" type="submit">Добавить устройство</button></div>
+        <button class="btn btn-success btn-add-device" type="submit">Добавить устройство</button>
         {% if messages %}
         {% for message in messages %}
         <div class="alert alert-{{ message.tags }}" role="alert">

@@ -1,23 +1,17 @@
 {% extends 'main/layout.html' %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <main>
-        {% block content %}
-        <div>
-            <h3>Версия 1.0.1</h3>
-            <li>В разделе добавить устройство в форме "инвентарный номер" расширено количество символов до 17</li>
-            {% endblock %}
-        </div>
-    </main>
-
-</body>
-
-</html>
+{% block content %}
+<div class="whatsnew-block">
+    <div>
+        <h3>Версия 1.0.1</h3>
+        <li>В разделе добавить устройство в форме "инвентарный номер" расширено количество символов до 17</li>
+    </div>
+    <div>
+        <h3>Версия 1.1.0</h3>
+        <li>Добавлены настройки с возможностью выбора по умолчанию зданий</li>
+        <li>Добавлено поле поиска "Примечание"</li>
+        <li>Примечание можно добавлять\убирать в настройках</li>
+        <li>Выполнен редизайн приложения</li>
+    </div>
+</div>
+{% endblock %}

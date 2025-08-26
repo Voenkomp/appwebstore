@@ -1,60 +1,172 @@
 body {
-    background: #d4f4fb26;
-    /* display: flex; */
+    background: #cbe0e43f;
 }
 
+* {
+    box-sizing: border-box;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+
+    padding: 3vh;
+    padding-left: 5vh;
+    padding-right: 5vh;
+    min-height: 100vh;
+    max-height: 100vh;
+    /* position: fixed; */
+    /* overflow-y: auto; */
+}
+
+/* Стили боковой панели */
 aside {
-    position: relative;
-    float: left;
-    background: #d9e5fd;
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
-    width: 270px;
-    flex-shrink: 0;
-    padding: 2% 0;
-    height: 100vh;
-    color: #0000;
-    box-shadow: 1px 5px 7px rgb(153, 150, 150);
-}
-
-.btn-exit {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 30px;
-}
-
-/* ДОБАВЛЕНО ИЗ DEEPSEEK */
-main {
     display: flex;
-    gap: 40px;
+    flex-direction: column;
+    min-height: calc(100vh - 6vh);
+    max-height: calc(100vh - 6vh);
+    width: 280px;
+    align-items: center;
+    gap: 50px;
     padding: 20px;
+    background: #1ef5f525;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    /* color: #0000; */
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+}
+
+/* #d9e5fde5 */
+/* 1ef5f52f */
+/* d9e5fd */
+.logo-layout {
+    display: flex;
+    flex-direction: row;
     justify-content: center;
+    align-items: flex-end;
+    margin-top: 30px;
+}
+
+.logo-store {
+    width: 24%;
+}
+
+aside .text-logo {
+    margin-bottom: -8px;
+    font-size: 42px;
+    font-weight: bold;
+    color: black;
+}
+
+aside ul {
+    list-style: none;
+    padding: 0px;
+}
+
+aside ul li {
+    color: #000;
+    font-size: 1.12em;
+    font-weight: 500;
+    color: rgb(0, 0, 0, 0.85);
+    letter-spacing: 0.01cap;
+    bottom: 90px;
+    margin-top: 20px;
+    transition: transform .3s ease;
+
+}
+
+
+aside ul a {
+    text-decoration: none;
+}
+
+aside ul li:hover,
+aside ul a:hover {
+    color: #080402;
+    /* background-color: #00000023;
+    border-radius: 20px; */
+    transform: scale(1.08);
+    /* background-color: #00000023;
+    border-radius: 20px;
+    padding-left: 4px; */
+    /* padding-right: 3px; */
+}
+
+/* #d24e00; */
+.btn-exit {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-top: auto;
+    margin-right: auto;
+}
+
+.username-block {
+    font-size: 15px;
+    font-weight: 500;
+    margin-right: auto;
+    letter-spacing: 0.04rem;
+
+}
+
+/* Конец стилей боковой панели */
+
+/* Стили слоя main */
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-flow: column;
+    /* flex: 1;
+    display: flex; */
+    width: 100%;
+    /* padding: 60px; */
+    background: rgba(255, 255, 255, 0.85);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    /* height: calc(100vh - 6%); */
+    /* overflow-y: auto;
+    scrollbar-width: none; */
+    /* gap: 0px; */
+    /* padding: 1.5%; */
+    min-height: calc(100vh - 6vh);
+    max-height: calc(100vh - 6vh);
+    /* justify-content: center; */
     /* Центрирование по горизонтали */
     /* align-items: center; */
     /* background-color: #f9f9f9; */
-    height: 100vh;
-    /* overflow-y: auto;
-    scrollbar-width: none; */
+    /* height: 100vh; */
+    /* overflow-y: auto; */
+    /* scrollbar-width: none; */
+}
+
+/* Конец стилей слоя main */
+
+
+/* Стили для страницы detail-device */
+.detail-info {
+    display: flex;
+    flex-direction: row;
+    gap: 70px;
+    align-items: flex-start;
+    /* flex: 1; */
+    background: white;
+    padding: 3rem;
+    padding-left: 6rem;
+
+    /* border-radius: 12px; */
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
 }
 
 .detail-device {
+    max-width: 350px;
     padding: 2%;
-}
-
-.detail-info {
-    display: flex;
-    gap: 70px;
-    align-items: flex-start;
     flex: 1;
-    background: white;
-    padding: 20px;
-    padding-left: 50px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* .actions {
+    flex-grow: 1;
+} */
 
 .detail-info h1 {
     font-size: 2rem;
@@ -92,41 +204,6 @@ main {
     color: #333;
 }
 
-/* Боковая панель */
-.sidebar {
-    width: 330px;
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.sidebar .device-image img {
-    width: 100%;
-    border-radius: 12px;
-    margin-bottom: 20px;
-}
-
-.sidebar .favorite-form {
-    margin-bottom: 20px;
-}
-
-.sidebar .btn-home {
-    display: block;
-    width: 100%;
-    text-align: center;
-    background: #007bff;
-    color: white;
-    padding: 10px;
-    border-radius: 6px;
-    text-decoration: none;
-    margin-top: 10px;
-}
-
-.sidebar .btn-home:hover {
-    background: #0056b3;
-}
-
 /* Кнопки действий */
 .actions {
     margin-top: 40px;
@@ -140,6 +217,10 @@ main {
     text-decoration: none;
     color: white;
     font-size: 1rem;
+}
+
+.btn-info-detail-device {
+    width: 100%;
 }
 
 .actions .btn-danger {
@@ -158,56 +239,7 @@ main {
     background: #138496;
 }
 
-/* КОНЦОВКА ИЗ DEEPSEEK */
-aside img {
-    width: 45%;
-    float: none;
-    position: relative;
-    bottom: 20px;
-    left: 75px;
-}
 
-aside .text-logo {
-    font-size: 40px;
-    font-weight: bold;
-    position: relative;
-    color: black;
-    bottom: 25px;
-    left: 55px;
-}
-
-aside ul {
-    list-style: none;
-    margin-top: 100px;
-}
-
-aside ul li {
-    color: #000;
-    font-size: 1.1em;
-    display: block;
-    position: relative;
-    bottom: 90px;
-    margin-top: 20px;
-    /*отступ сверху*/
-    transition: transform .4s ease;
-
-}
-
-aside ul a {
-    text-decoration: none;
-}
-
-aside ul li:hover,
-aside ul a:hover {
-    color: #d24e00;
-    transform: scale(1.02);
-}
-
-
-.custom-form {
-    position: relative;
-    padding-top: 10px;
-}
 
 
 .form-filter {
@@ -222,20 +254,34 @@ aside ul a:hover {
     width: 30%;
 } */
 
+
+
+
+/* Стили на странице 'Все устройства' */
 /* Настройки положения таблицы на странице 'все устройства' */
 .table-set {
-    /* width: 330px; */
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    /* display: flex; */
+    /* flex: 1; */
+    /* display: grid;
+    grid-template-columns: 1fr 270px; */
+    /* gap: 20px; */
+    /* min-height: calc(100vh - 6vh); */
+    max-height: calc(100vh - 6vh);
+
+
+    /* /* background: white; */
+    margin: 40px;
+    margin-right: -15px;
+    /* padding: 20px; */
+    border-radius: 0px;
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: flex-start; */
     /* overflow-y: auto; */
-    padding: 4%;
-    padding-top: 1%;
-    padding-bottom: 0px;
+    /* padding: 4%; */
+    /* padding-top: 1%; */
+    /* padding-bottom: 0px; */
     /* height: 100vh; */
     /* max-width: 100%; */
 
@@ -244,26 +290,110 @@ aside ul a:hover {
 
 /* Стили фильтра для поиска в таблице на странице "все устройства" */
 main .filter-device {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
     /* width: 330px; */
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* background: white; */
+    /* padding: 30px; */
+    border-radius: 0px;
+    margin: 30px;
+    padding: 10px;
+    padding-bottom: 60px;
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
     /* padding: 60px; */
-    padding-top: 2%;
+    /* padding-top: 2%; */
     /* position: sticky; */
-    width: 100%;
+    /* width: 100%; */
     /* height: 100vh; */
 
 }
 
-main .lower {
+.custom-form-filter {
+    margin: 0
+}
+
+.custom-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.find-me {
+    margin-bottom: 15px;
+    font-size: 42px;
+    font-weight: 350;
+}
+
+/* Конец стилей на странице 'Все устройства' */
+
+/* Стили на странице Настройки */
+
+.settings-block {
+    display: flex;
+    width: 700px;
+}
+
+.settings-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: flex-start; */
+    padding: 8vh;
+    /* padding-top: 19vh; */
+    padding-bottom: 20px;
+    gap: 5%;
+    font-size: 20px;
+}
+
+.block-note-filter {
+    padding: 2%;
+    border-radius: 12px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.block-list-buildings {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    padding: 2%;
+    border-radius: 12px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.block-confirm {
+    margin-top: auto;
+}
+
+.text-confirm {
+    margin-bottom: 0;
+}
+
+/* Конец стилей на странице Настройки */
+
+/* Стили страницы "Что нового" */
+.whatsnew-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 7vh;
+}
+
+/* Конец стилей страницы "Что нового" */
+/* Стили страницы "О нас" */
+.about-block {
+    padding: 7vh;
+}
+
+/* main .lower {
     float: left;
     margin-top: 100px;
     margin-left: 60px;
     text-align: center;
     width: 75%;
-}
+} */
 
 .btn-success {
     margin-top: 15px;
@@ -295,10 +425,15 @@ main .lower {
 .favorites-container {
     display: flex;
     flex-wrap: wrap;
+    align-content: flex-start;
+    padding: 70px;
+    padding-top: 70px;
     gap: 20px;
-    padding: 20px;
+    /* max-height: 100vh; */
+    /* padding: 20px; */
     overflow-y: auto;
     scrollbar-width: none;
+    /* flex: 1; */
     /* margin-left: 270px; */
 }
 
@@ -306,20 +441,20 @@ main .lower {
     border: 1px solid #e0e0e0;
     border-radius: 10px;
     padding: 20px;
-    background: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    width: 240px;
+    background: rgba(247, 255, 217, 0.100);
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); */
+    width: 250px;
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
-    height: 230px;
+    height: 220px;
 
 }
 
 .device-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-    background: #f8fafc;
+    transform: translateY(-8px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    background: rgba(247, 255, 217, 0.904);
 }
 
 .device-title {
@@ -507,11 +642,11 @@ main .lower {
 .describe-window {
     flex: 1;
     background: white;
-    padding: 70px;
+    padding: 10px;
     padding-top: 2%;
     border-radius: 8px;
     /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
-    position: sticky;
+    /* position: sticky; */
     /* top: 20px; */
     /* height: 100vh; */
 }
@@ -520,7 +655,7 @@ main .lower {
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     padding: 16px;
-    min-height: 400px;
+    min-height: 45vh;
     margin-bottom: 16px;
     background: white;
     outline: none;
@@ -581,4 +716,49 @@ main .lower {
     background: #3a5f8a;
 }
 
+/* Боковая панель */
+.sidebar {
+    width: 380px;
+    background: white;
+    padding: 2.5rem;
+    padding-top: calc(3rem + 4%);
+    border-left: solid 0.15rem;
+    border-color: #0000000c;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    /* border-radius: 12px; */
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+}
+
+.sidebar .device-image img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.sidebar .favorite-form {
+    margin-bottom: 20px;
+}
+
+.sidebar .btn-home {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #007bff;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.sidebar .btn-home:hover {
+    background: #0056b3;
+}
+
 /* Конец описания стилей для формы описания на странице устройства */
+
+
+.form-check-input {
+    margin-left: 0;
+}

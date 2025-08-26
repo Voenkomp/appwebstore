@@ -5,7 +5,7 @@
 {% block content %}
 
 <div class='table-set'>
-    <table id="table-all-devices" class="display" style="width:100%">
+    <table id="table-all-devices" class="display">
         <thead>
             <tr>
                 <!-- <th>№</th> -->
@@ -55,44 +55,37 @@
         </tbody>
     </table>
 
-    <script>
-        $(document).ready(function () {
-            $('#table-all-devices').DataTable({
-                paging: false,
-                searching: false,
-                info: true,
-                fixedHeader: true,
-                scrollY: '85vh',
-                scroller: true,
-            });
-
-            $('#table-all-devices').on('click', '.more-indicator', function (event) {
-                event.stopPropagation(); // Остановка всплытия события
-                var $cell = $(this).closest('td.cartridge-cell');
-                var $summary = $cell.find('.cartridge-summary');
-                var $details = $cell.find('.cartridge-details');
-
-                if ($details.is(':visible')) {
-                    // Если детали раскрыты, скрываем их
-                    $details.hide();
-                    $summary.show();
-                } else {
-                    // Если детали скрыты, раскрываем их
-                    $summary.hide();
-                    $details.show();
-                }
-            });
-        });
-    </script>
 </div>
 
 <div class="filter-device">
-    <h3 class="display-6">Найди меня</h3>
-    <form method="get" class="custom-form">
+    <h3 class="find-me">Найди меня</h3>
+    <form method="get" class="custom-form" id="deviceFilterForm">
         {{ devices.form.inv_num}}
         {{ devices.form.serial}}
         {{ devices.form.prod_mod_dev}}
-        {{ devices.form.building}}
+        <div class="dropdown w-100">
+            <button id="buildingDropdownBtn"
+                class="form-control text-start d-flex justify-content-between align-items-center" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Здания
+                <span class="ms-2 dropdown-toggle"></span>
+            </button>
+
+            <div class="dropdown-menu w-100 p-3" style="max-height: 300px; overflow-y: auto;">
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="checkAllBuildings">
+                    <label class="form-check-label" for="checkAllBuildings">Выбрать все</label>
+                </div>
+                <div id="building-list">
+                    {% for cb in devices.form.building %}
+                    <div class="form-check">
+                        {{ cb.tag }}
+                        <label class="form-check-label" for="{{ cb.id_for_label }}">{{ cb.choice_label }}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
         {{ devices.form.location}}
         {% if devices.form.note %}
         {{ devices.form.note}}
@@ -104,5 +97,78 @@
     </form>
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const listSelector = '#building-list input[type="checkbox"][name="building"]';
+        const allBox = document.getElementById('checkAllBuildings');
+        const btn = document.getElementById('buildingDropdownBtn');
+
+        function updateButtonLabel() {
+            const checked = document.querySelectorAll(listSelector + ':checked');
+            if (checked.length === 0) {
+                btn.firstChild.textContent = "Здания";
+            } else {
+                btn.firstChild.textContent = "Здания (" + checked.length + ")";
+            }
+            // синхронизируем "Выбрать все"
+            const total = document.querySelectorAll(listSelector).length;
+            if (allBox) allBox.checked = (checked.length === total && total > 0);
+        }
+
+        // Выбрать все
+        if (allBox) {
+            allBox.addEventListener('change', function () {
+                document.querySelectorAll(listSelector).forEach(cb => cb.checked = allBox.checked);
+                updateButtonLabel();
+            });
+        }
+
+        // Каждый чекбокс обновляет текст
+        document.querySelectorAll(listSelector).forEach(cb => {
+            cb.addEventListener('change', updateButtonLabel);
+        });
+
+        updateButtonLabel();
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $('#table-all-devices').DataTable({
+            paging: false,
+            searching: false,
+            info: false,
+            fixedHeader: true,
+            scrollY: '77vh',
+            scroller: true,
+        });
+
+        $('#table-all-devices').on('click', '.more-indicator', function (event) {
+            event.stopPropagation(); // Остановка всплытия события
+            var $cell = $(this).closest('td.cartridge-cell');
+            var $summary = $cell.find('.cartridge-summary');
+            var $details = $cell.find('.cartridge-details');
+
+            if ($details.is(':visible')) {
+                // Если детали раскрыты, скрываем их
+                $details.hide();
+                $summary.show();
+            } else {
+                // Если детали скрыты, раскрываем их
+                $summary.hide();
+                $details.show();
+            }
+        });
+    });
+</script>
 
 {% endblock %}

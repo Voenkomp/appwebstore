@@ -1,18 +1,30 @@
 {% extends 'main/layout.html' %}
 
 {% block content %}
-
-<form method="post">
-    {% csrf_token %}
-    <div>
-        <div class="form-check form-switch">{{ form.note_filter }}</div>
-        <label for="{{form.note_filter.id_for_label}}">{{ form.note_filter.label}}<label>
-    </div>
-    <label for="{{form.default_building.id_for_label}}">{{ form.default_building.label }}</label>
-    <div>{{ form.default_building }}</div>
-    <p>Чтобы настройки вступили в силу, необходимо сохранить</p>
-    <button type="submit">Сохранить</button>
-</form>
+<div class="settings-block">
+    <form method="post" class="settings-page">
+        {% csrf_token %}
+        <div class="block-note-filter">
+            <div class="form-check form-switch">{{ form.note_filter }}
+                <label for="{{form.note_filter.id_for_label}}">
+                    {{form.note_filter.label}}
+                </label>
+            </div>
+        </div>
+        <div class="block-list-buildings">
+            <label for="{{form.default_building.label}}">{{ form.default_building.label }}</label>
+            {% for cb in form.default_building%}
+            <div class="form-check form-switch">
+                {{cb}}
+            </div>
+            {% endfor %}
+        </div>
+        <div class="block-confirm">
+            <p class="text-confirm">Чтобы настройки вступили в силу, необходимо сохранить</p>
+            <button class="btn btn-success" type="submit">Сохранить</button>
+        </div>
+    </form>
+</div>
 
 
 

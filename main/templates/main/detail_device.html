@@ -7,13 +7,13 @@
 <div class="detail-info">
     <div class="detail-device">
         <h1>{{ device.inv_num }}</h1>
-        <p class="serial">Серийный номер: {{ device.serial }}</p>
-        <p class="model">Модель: {{ device.prod_mod_dev }}</p>
-        <p class="location">Корпус: {{ device.building }}, Расположение: {{ device.location }}</p>
-        <p class="note">Примечание: {{ device.note }}</p>
-        <p class="hostname">Hostname: <a href='http://{{ device.hostname }}.dvfu.ru' target="_blank">
+        <p class="serial"><b>Серийный номер:</b> {{ device.serial }}</p>
+        <p class="model"><b>Модель:</b> {{ device.prod_mod_dev }}</p>
+        <p class="location"><b>Корпус:</b> {{ device.building }}, Расположение: {{ device.location }}</p>
+        <p class="note"><b>Примечание:</b> {{ device.note }}</p>
+        <p class="hostname"><b>Hostname:</b> <a href='http://{{ device.hostname }}.dvfu.ru' target="_blank">
                 {{ device.hostname}}</a></p>
-        <p class="ip">IP-адрес: <a href='http://{{ device.ip_add }}' target="_blank">{{ device.ip_add }}</a></p>
+        <p class="ip"><b>IP-адрес:</b> <a href='http://{{ device.ip_add }}' target="_blank">{{ device.ip_add }}</a></p>
 
         <div class="cartridges">
             <h2>Совместимые картриджи:</h2>
@@ -27,8 +27,8 @@
         </div>
 
         <div class="actions">
-            <a href="{% url 'device-delete' device.id %}" class="btn btn-danger">Удалить устройство</a>
-            <a href="{% url 'device-update' device.id %}" class="btn btn-info">Редактировать</a>
+            <!-- <a href="{% url 'device-delete' device.id %}" class="btn btn-danger">Удалить устройство</a> -->
+            <a href="{% url 'device-update' device.id %}" class="btn btn-info btn-info-detail-device">Редактировать</a>
         </div>
     </div>
 

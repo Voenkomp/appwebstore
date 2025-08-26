@@ -5,7 +5,7 @@ from .models import Device
 
 class UserSettingsForm(forms.ModelForm):
     default_building = forms.MultipleChoiceField(
-        widget=forms.CheckboxSelectMultiple,
+        widget=forms.CheckboxSelectMultiple(attrs={"class": "form-check-input"}),
         required=False,
         label="Здания в которых будет поиск по умолчанию",
     )

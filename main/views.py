@@ -38,7 +38,9 @@ def all_devices(request):
                 initial_data["building"] = settings.default_building
         except UserSettings.DoesNotExist:
             initial_data = {}
-        filter = DeviceFilter(data=initial_data, queryset=devices, request=request)
+        filter = DeviceFilter(
+            data=initial_data, queryset=devices, note_check=note_check, request=request
+        )
     else:
         filter = DeviceFilter(
             data=request.GET, queryset=devices, note_check=note_check, request=request
