@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
 from .models import Device, Cartridges, UserSettings
 from django.views.generic import DetailView, UpdateView, DeleteView
 from .filters import DeviceFilter
@@ -21,7 +20,6 @@ class CustomLogoutView(LogoutView):
 
 @login_required
 def index(request):
-    # favorite_devices = request.user.favorite_devices.all()
     favorite_devices = request.user.favorite_devices.all()
     return render(request, "main/index.html", {"devices": favorite_devices})
 

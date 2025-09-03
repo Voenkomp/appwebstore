@@ -720,7 +720,7 @@ main .filter-device {
 .sidebar {
     width: 380px;
     background: white;
-    padding: 2.5rem;
+    padding: 1.6rem;
     padding-top: calc(3rem + 4%);
     border-left: solid 0.15rem;
     border-color: #0000000c;
@@ -761,4 +761,17 @@ main .filter-device {
 
 .form-check-input {
     margin-left: 0;
+}
+
+.calc-data {
+    margin-top: 3rem;
+}
+
+.toggle_favorite {
+    padding-right: 0.2rem;
+    padding-left: 0.8rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    border-radius: 12px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
