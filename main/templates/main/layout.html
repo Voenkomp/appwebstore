@@ -23,7 +23,8 @@
     {{ form.media }}
     <link rel="icon" href="{% static 'main/img/logo_store_v2.png' %}" />
     <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css"> -->
-
+    {% block header %}
+    {% endblock %}
 </head>
 
 <body>
@@ -53,6 +54,9 @@
                     </a>
                     <a href="{% url 'about' %}">
                         <li><i class="fa-solid fa-address-book"></i> О нас</li>
+                    </a>
+                    <a href="/wiki">
+                        <li><i class="fa-brands fa-wikipedia-w"></i> База Wiki</li>
                     </a>
                     {% if user.username == 'admin' %}
                     <a href="/admin" target="_blank">
