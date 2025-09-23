@@ -74,3 +74,9 @@ class UserSettings(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     note_filter = models.BooleanField(default=0)
     default_building = models.JSONField(default=list)
+
+    def __str__(self):
+        return f"{self.user}"
+
+    class Meta:
+        verbose_name_plural = 'Настройки пользователя'
