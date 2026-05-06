@@ -79,4 +79,4 @@ class UserSettings(models.Model):
         return f"{self.user}"
 
     class Meta:
-        verbose_name_plural = 'Настройки пользователя'
+        verbose_name_plural = "Настройки пользователя"
